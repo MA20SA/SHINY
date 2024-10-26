@@ -1,0 +1,21 @@
+.star-rating {
+    display: flex;
+    gap: 4px;
+
+}
+
+.star {
+    font-size: 15px;
+    color: gold;
+    position: relative;
+}
+
+.half {
+    background: linear-gradient(90deg, gold 50%, #e0e0e0 50%);  /* Half-gold, half-gray */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.empty {
+    color: #e0e0e0;  /* Gray color for empty stars */
+}

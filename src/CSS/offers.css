@@ -1,0 +1,52 @@
+.offers {
+    width: 100%;
+    height: 500px;
+    background-image: url("../images/offersBG.png");
+    background-repeat: repeat-x;
+    background-position: top;
+    animation: moveBackground 10s linear infinite; /* Add this line */
+}
+
+@keyframes moveBackground {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 0; /* Adjust this value to control the speed */
+    }
+}
+
+.offersCard {
+    border: 5px solid firebrick;
+    background-color: white;
+    width: 40%;
+    margin: auto;
+    position: relative;
+    top: 270px;
+    text-align: center;
+    color: #0048a7;
+    font-size: 20px;
+    line-height: 18px;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 3px 3px 3px gray;
+}
+
+@media (min-width : 320px) and (max-width: 768px){
+    .offersCard{
+        width: 400px;
+    }#AdminOffers .GoToEditHallByOwner{
+    position: relative;
+    right: -300px!important;top: 60px!important;
+    }#CreateAdminDoscount .FormAddNewOwnerHall{
+    position: relative;
+    right: 10px!important;
+    }#CreateAdminDoscount .offers{
+    width: 95% !important;
+    }#CreateAdminDoscount .FormAddNewOwnerHall{
+    width: 95%!important;
+    }#SubmitAdminDiscount{
+    position: relative;
+    right: 130px!important;
+    }
+}

@@ -1,0 +1,667 @@
+body{
+    background-color:white;
+    direction: rtl;
+    font-family: 'Cairo', serif;
+    font-weight: bold;
+    overflow-x: hidden;
+}
+
+.header {
+    height: 105px;
+    box-shadow: 3px 3px 3px #E9CEC3;
+    width: 100%;
+    background-color: white;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.logoRemove {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    left: -10px;
+    top:-60px
+}
+
+.divHeader{
+    position: relative;
+    width:1000px;
+    margin: auto;
+}
+
+.divHeaderCenter{
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    margin-top: 5px;
+    position: absolute;
+    right: 360px;
+}
+
+
+.divHeaderRight{
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    margin-top: 5px;
+    float: right;
+    margin-right: -120px;
+    /*border: 1px red solid;*/
+}
+.btn1 , .btn2{
+    border-radius: 30px;
+    background-color: white;
+    color:#0A499C ;
+    border: none;
+    font-size: 15px;
+    height: 40px;
+}
+
+
+.header button:hover{
+    background-color:#0A499C;
+    transform: translateY(-2px); /* Slight lift effect on hover */
+    font-size: 16px;
+}
+
+header button:active {
+    background-color: #0A499C; /* Keep the original color on active */
+    transform: translateY(0); /* Remove lift effect on click */
+}
+
+.timedate p{
+    padding: 5px;
+    display: inline;
+    float: left;
+    margin-left: 10px;
+    color: #0A499C;
+}
+
+.SeenAllAboutUs :hover{
+    background-color: #0A499C!important;
+    color: #f1f1f1!important;
+}
+
+.divAbout{
+    width: 99%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 18px;
+    position: relative;
+    top:-15px;
+}
+.AboutR{
+    width: 600px;
+    height: 440px;
+    margin: 20px;
+    color: #0A499C;
+    /*border: 1px solid green;*/
+}
+
+.AboutR ul{
+    width: 90%;
+    margin: auto;
+}
+.AboutR li{
+    float: right;
+    opacity: 0.8;
+    list-style-type: none;
+}
+
+.AboutR i {
+    color:#f7d93b;
+    padding: 5px;
+}
+
+.OverallRating{
+    display: flex;
+    justify-content: center;
+    margin-top: -10px;
+}
+
+.NoVisitor,.NoHalls {
+    height: 100px;
+    width: 200px;
+    position: relative;
+}
+
+
+.AboutL{
+    width: 550px;
+    height: 440px;
+    margin: 20px;
+    color: #0A499C;
+    padding-top:20px;
+}
+
+.highImg{
+    width: 340px;
+    height: 240px;
+    position: absolute;
+    left: 190px;
+    box-shadow: 5px 5px 5px #E9CEC3;
+    border-radius: 0 40px 0 0;
+}
+
+.highVideo{
+    width: 340px;
+    height: 240px;
+    position: absolute;
+    left: 30px;
+    top:210px;
+    box-shadow: 5px 5px 5px #E9CEC3;
+    border-radius: 0 40px 0 40px;
+}
+.highImg img{
+    width: 100%;
+    height: 100%;
+    border-radius: 0 40px 0 40px;
+}
+
+.highVideo video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.supFooter{
+    position: relative;
+    bottom: 0;
+    margin-top: 210px;
+    /*border: 1px solid red;*/
+    width: 100%;
+    height: 320px;
+    padding: 10px;
+    background-color: #FAEEF6;
+}
+
+.footer{
+    width: 98%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 300px;
+    text-align: center;
+    border: 1px solid pink;
+    color:#0A499C;
+    margin: auto;
+}
+
+.FooterDiv1, .FooterDiv2 , .FooterDiv3{
+    display: inline-block;
+    /*border: 1px solid pink;*/
+    width: 30%;
+    height:90%;
+    margin: 10px;
+    padding: 10px;
+    overflow: hidden;
+}
+
+
+.UnderLogoInFooter{
+    position: relative;
+    /*top: -120px;*/
+    left: 25px;
+    margin: auto;
+
+}
+
+.FooterDiv3Text,.FooterDiv3 h4, .FooterDiv3 h3{
+    direction: ltr;
+    /*float: left;*/
+    position: relative;
+    /*top: -90px;*/
+    text-shadow: 2px 2px 2px #E9CEC3;
+}
+
+.contactIcons i{
+    margin: 8px;
+    padding: 6px;
+    text-align: center;
+    /*border-radius: 50%;*/
+    background-color: white;
+    font-size: 20px;
+    box-shadow: 2px 2px 2px #738AA3;
+}
+
+.contactIcons i:hover{
+    background-color: #E9CEC3;
+    cursor: pointer;
+}
+
+.imgInFooter{
+    width: 60%;
+    height: 88%;
+    position: relative;
+    top:-17px;
+  }
+
+.FooterDiv1 p{
+    font-size: 13px;
+    opacity: 0.8;
+    text-shadow: 1px 1px 1px #E9CEC3;
+}
+
+.singleflowerFooter{
+    position: absolute;
+    top: 10px;
+    right: 338px;
+    /*border: 1px solid red;*/
+    z-index: -1;
+}
+.singleflowerFooter img{
+    width: 100px;
+    height: 100px;
+}
+.singleflowerFooter2{
+    position: absolute;
+    top: 10px;
+    right: 53px;
+    /*border: 1px solid red;*/
+    z-index: -1;
+    transform: scaleX(-1);
+}
+.singleflowerFooter2 img{
+    width: 100px;
+    height: 100px;
+}
+
+@media (min-width : 320px) and (max-width: 768px) {
+    .StatementInAboutUS{
+        position: relative;
+        text-align:center;
+        top:330px;
+    }
+    .HrDetailsHallAboutUs{
+        display: flex;
+        justify-content: center;
+        position: relative;
+        top: 430px;
+        width: 80%;
+        right: 60px;
+    }
+    .HrDetailsHallAboutUs img{
+        width: 100%;
+        /*border:1px solid red;*/
+        margin-left: 480px;
+    }
+
+    .header {
+        height: 105px;
+        box-shadow: 3px 3px 3px #E9CEC3;
+        width: 100%;
+        background-color: white;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .logoRemove {
+        width: 130px;
+        height: 130px;
+        position: absolute;
+        left: -18px;
+        top:-18px
+    }
+
+    .divHeader{
+        position: relative;
+        width:1000px;
+        margin: auto;
+    }
+
+    .divHeaderCenter{
+        display: flex;
+        justify-content: center;
+        height: 50px;
+        margin-top: 5px;
+        position: absolute;
+        right: -22px;
+        /*visibility: hidden;*/
+        top:17px;
+    }
+    .divHeaderRight{
+        display: flex;
+        justify-content: center;
+        height: 50px;
+        margin-top: -15px;
+        float: right;
+        margin-right: -28px;
+        /*border: 1px red solid;*/
+    }
+
+    #UesrHeader .divHeaderRight{
+        display: flex;
+        justify-content: center;
+        height: 50px;
+        margin-top: -30px;
+        float: right;
+        margin-right: -28px;
+        /*border: 1px red solid;*/
+    }
+    #UesrHeader .divHeaderCenter {
+        position: absolute;
+        top: 5px;
+        right: 23px;
+    }
+    #UesrHeader .divHeaderCenter {
+        position: absolute;
+        top: 7px;
+        right: 35px;
+    }
+    #UesrHeader #editReg {
+        position: absolute;
+        top: -13px;
+    }
+    #UesrHeader .btnUserHeader {
+        border-radius: 30px;
+        background-color: white;
+        color:#0A499C ;
+        border: none;
+        margin: -8px;
+        font-size: 13px!important;
+        height: 30px;
+    }
+
+    #AdminHeader .divHeaderRight{
+        display: flex;
+        justify-content: center;
+        height: 50px;
+        margin-top: -30px;
+        float: right;
+        margin-right: -28px;
+        /*border: 1px red solid;*/
+    }
+    #AdminHeader .divHeaderCenter {
+        position: absolute;
+        top: 7px;
+        right: -85px;
+    }
+    #AdminHeader #editReg {
+        position: absolute;
+        top: -13px;
+    }
+    #AdminHeader .btnUserHeader1 {
+        border-radius: 30px;
+        background-color: white;
+        color:#0A499C ;
+        border: none;
+        margin-top: 12px;
+        font-size: 12px!important;
+        height: 30px;
+    }
+
+    #ownerHeader .divHeaderCenter {
+        position: absolute;
+        top: 5px;
+        right: 23px;
+    }
+    #ownerHeader .divHeaderCenter {
+        position: absolute;
+        top: 7px;
+        right: 35px;
+    }
+    #ownerHeader #editReg {
+        position: absolute;
+        top: -13px;
+    }
+    #ownerHeader .btnUserHeader {
+        border-radius: 30px;
+        background-color: white;
+        color:#0A499C ;
+        border: none;
+        margin: -8px;
+        font-size: 13px!important;
+        height: 30px;
+    }
+    #ownerHeader .btnUserHeader1 {
+        border-radius: 30px;
+        background-color: white;
+        color:#0A499C ;
+        border: none;
+        font-size: 13px!important;
+        height: 30px;
+    }
+
+    .btn1 , .btn2{
+        border-radius: 30px;
+        background-color: white;
+        color:#0A499C ;
+        border: none;
+        margin: -8px;
+        font-size: 13px!important;
+        height: 30px;
+    }
+
+    .header button:hover{
+        background-color:#0A499C;
+        transform: translateY(-2px); /* Slight lift effect on hover */
+        font-size: 14px;
+    }
+     header button:active {
+        background-color: #0A499C; /* Keep the original color on active */
+        transform: translateY(0); /* Remove lift effect on click */
+    }
+    .timedate p{
+        padding: 4px;
+        font-size : 10px;
+        display: inline;
+        float: left;
+        margin-left: 10px;
+        color: #0A499C;
+    }
+
+    .divAbout{
+        width: 99%;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        font-size: 18px;
+        position: relative;
+        top:-15px;
+    }
+    .AboutR{
+        position: relative;
+        left: -20px;
+        font-size: 15px;
+        width: 600px;
+        height: 440px;
+        color: #0A499C;
+        /*border: 1px solid green;*/
+    }
+
+    .AboutR li{
+        float: right;
+        opacity: 0.8;
+        list-style-type: none;
+    }
+
+    .AboutR i {
+        color:#f7d93b;
+        padding: 5px;
+    }
+
+    .NoVisitor,.NoHalls {
+        height: 100px;
+        position: relative;
+        margin-top: 48px;
+        left: 170px;
+        padding: 10px;
+        /*border: 1px solid red;*/
+        margin-right: 10px;
+    }.NoVisitor i,.NoHalls i{
+         display: inline;
+         position: relative;
+     }.NoVisitor p,.NoHalls p{
+          font-size: 13px;
+          width: 100%; margin-right: 6px;
+      }
+
+
+    .AboutL{
+        position: relative;
+        top:480px;
+        width: 550px;
+        height: 440px;
+        color: #0A499C;
+    }
+
+    .highImg{
+        width: 270px;
+        height: 190px;
+        position: absolute;
+        left: 190px;
+        box-shadow: 5px 5px 5px #E9CEC3;
+        border-radius: 0 40px 0 0;
+    }
+    .highVideo{
+        width: 270px;
+        height: 190px;
+        position: absolute;
+        left: 15px;
+        top:150px;
+        box-shadow: 5px 5px 5px #E9CEC3;
+        border-radius: 0 40px 0 40px;
+    }
+    .highImg img{
+        width: 100%;
+        height: 100%;
+        border-radius: 0 40px 0 40px;
+    }
+    .highVideo video{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+
+    .supFooter{
+        position: relative;
+        bottom: 0;
+        margin-top: 210px;
+        /*border: 1px solid red;*/
+        width: 100%;
+        height: 210px;
+        padding: 10px;
+        background-color: #FAEEF6;
+        font-size: 10px;
+    }
+
+    .footer{
+        height: 195px;
+        width: 98%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        border: 1px solid pink;
+        color:#0A499C;
+        margin: auto;
+    }
+
+    .FooterDiv1 , .FooterDiv3{
+        display: inline-block;
+        /*border: 1px solid pink;*/
+        width: 25%;
+        height:90%;
+        padding-top: 10px;
+        /*padding: 10px;*/
+        overflow: hidden;
+    }
+    .FooterDiv3 h4,.FooterDiv3 h5{
+        font-size: 14px;
+    }
+
+
+    .UnderLogoInFooter{
+        position: relative;
+        /*top: -120px;*/
+        /*left: 5px;*/
+        /*margin: auto;*/
+        z-index: 41;
+        width: 100%;
+        left: -9px;
+
+    }
+    .UnderLogoInFooter img{
+        border: 1px solid red;
+        width: 100%;
+        height: 100%;
+    }
+
+    .FooterDiv3Text,.FooterDiv3 h4, .FooterDiv3 h3{
+        direction: ltr;
+        /*float: left;*/
+        position: relative;
+        /*top: -90px;*/
+        text-shadow: 2px 2px 2px #E9CEC3;
+    }
+
+    .FooterDiv1 p{
+        width: 120px;
+    }
+
+    .contactIcons i{
+        margin: 1px;
+        padding: 5px;
+        text-align: center;
+        /*border-radius: 50%;*/
+        background-color: white;
+        font-size: 12px;
+        box-shadow: 2px 2px 2px #738AA3;
+        margin-top: 10px;
+    }
+
+    .contactIcons i:hover{
+        background-color: #E9CEC3;
+        cursor: pointer;
+    }
+
+    .imgInFooter{
+        width: 120px;
+        height: 68%;
+        position: relative;
+        top:-16px;
+    }
+
+    .FooterDiv1 p{
+        font-size: 11px;
+        opacity: 0.8;
+        text-shadow: 1px 1px 1px #E9CEC3;
+    }
+    .FooterDiv2 div{
+        position: relative;
+        /*left: -120px;*/
+        display: block;
+        margin: -10px;
+        right: -3px;
+        top: -40px;
+        /*border: 1px solid red;*/
+    }
+    .FooterDiv2{
+        position: relative;
+        top: -7px;
+        padding: 8px;
+    }
+
+
+    .singleflowerFooter2{
+        width: 12%;
+        position: absolute;
+        top: 36px;
+        right: -4px;
+        /*border: 1px solid red;*/
+        z-index: -1;
+        transform: scaleX(-1);
+    }
+    .singleflowerFooter2 img{
+        width: 10%;
+        height: 20%;
+    }
+}

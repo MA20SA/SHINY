@@ -1,0 +1,133 @@
+.FormAddNewOwnerHall{
+    max-width: 600px;
+    margin: 25px auto;
+    padding: 15px;
+    background-color: white;
+    /*background-color: white;*/
+    /*box-shadow: 2px 2px 2px #cde0ef ;*/
+    border:17px solid #cde0ef ;
+    border-radius: 8px;
+    /*text-align: center;*/
+}
+
+.FormAddNewOwnerHall div input{
+    display: flex;
+    /*margin-bottom: 15px;*/
+    border: none;
+    border-bottom: 1px solid #738AA3;
+    width: 70% !important;
+    text-align: right;
+    margin: auto;
+    position: relative;
+    top: -5px;
+    padding: 5px;
+}
+
+.FormAddNewOwnerHall label {
+    font-size: 16px;
+    position: relative;
+    right: 85px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+    margin-top:4px;
+}
+
+
+.FormAddNewOwnerHall div input:focus {
+    outline: none; /* Removes the default outline */
+}
+
+
+.FormAddNewOwnerHall input[type="submit"]{
+    width: 150px!important;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    background-color: #cde0ef; /* Light blue background */
+    color: #333; /* Text color */
+    padding: 10px 20px; /* Spacing around text */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    font-weight: 500; /* Font weight */
+    position: relative;
+    left: 50%;
+    right: 38%;
+}
+
+.FormAddNewOwnerHall input[type="submit"]:hover{
+    background-color: #b3d8f1; /* Slightly darker on hover */
+}
+
+
+.FormAddNewOwnerHall .error {
+    color: red;
+    font-size:12px;
+    text-align: right;
+    margin-right: 85px;
+    height: 0;
+}
+
+.occasion-row{
+    padding: 7px;
+    display: block;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.deleteOwnerHall{
+    width: 80px!important;
+    display: inline;
+}
+.AddOwnerHall{
+    width: 90px!important;
+    margin-right: 5px;
+}
+
+.deleteOwnerHall,.AddOwnerHall{
+    display: block;
+    height: 40px!important;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    position: relative;
+    right: 85px;
+}
+
+.photoInput
+{
+    background-color: #cde0ef; /* Light blue background */
+    color: #333; /* Text color */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    font-weight: 500; /* Font weight */
+    position: relative;
+    width:60%;
+    margin: 4px;
+    padding:3px;
+    display: flex;
+    right:20%;
+}
+
+.selectCity{
+    width:60%;
+    height: 25px;
+    font-size: 14px;
+    text-align: center;
+    position: relative;
+    right: 70px;
+    top:30px;
+    color: #0A499C;
+    /*border: 3px solid #0A499C;*/
+    border-radius: 5px 5px 5px 5px;
+    border: 1px solid #738AA3;
+    font-weight: bold;
+    bottom:10px;
+    z-index: 3;
+    margin-top: 30px;
+}

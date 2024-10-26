@@ -1,0 +1,23 @@
+@import "./CSS/HAF.css" ;
+@import "CSS/AutoChangingCategories.css";
+@import "./CSS/SignIn.css";
+@import "./CSS/Login.css";
+@import "./CSS/SignInAlert.css";
+@import "./CSS/ForgotPassword.css";
+@import "./CSS/ResetPassword.css";
+@import "./CSS/Halls.css";
+@import "CSS/AddHall.css";
+@import "CSS/Rating.css";
+@import "CSS/discount.css";
+@import "CSS/AddDiscount.css";
+@import "CSS/offers.css";
+@import "CSS/DetailsOfHall.css";
+@import "CSS/BookingHall.css";
+@import "CSS/UserHeader.css";
+@import "CSS/UserBooking.css";
+@import "CSS/EditProfileRegUser.css";
+@import "CSS/OwnerHall.css";
+@import "CSS/AddNewOwnerHall.css";
+@import "CSS/EditHallByOwner.css";
+@import "CSS/OwnerDiscount.css";
+

@@ -1,0 +1,94 @@
+.btnUserHeader,.btnUserHeader1{
+    border-radius: 30px;
+    background-color: white;
+    color:#0A499C ;
+    border: none;
+    font-size: 15px;
+    height: 40px;
+}
+
+.btnUserHeader1{
+    margin-top: 8px;
+    margin-left: 2px;
+}
+
+
+/* Remove caret from Dropdown.Toggle */
+.no-caret::after {
+    display: none !important;
+}
+
+/* Dropdown Menu Container */
+.dropdown-menu {
+    max-height: 250px; /* Limit height for scrolling */
+    overflow-y: auto;
+    background-color: #f0f4f8;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
+    width: 300px; /* Adjust width as needed */
+    padding: 10px;
+    text-align: right;
+}
+
+/* Dropdown Notification Item */
+.dropdown-item {
+    color: #333333;
+    border-bottom: 1px solid #d1d1d1;
+    padding: 12px 5px;
+    font-size: 15px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    white-space: normal; /* Allows text to wrap within item */
+    word-wrap: break-word; /* Breaks long words if needed */
+    overflow-x: hidden; /* Avoids horizontal scroll */
+}
+
+
+.dropdown-item:last-child {
+    border-bottom: none; /* Remove divider for last item */
+}
+
+/* Empty Notifications Message */
+.empty-message-UserNotifications {
+    color: #888;
+    font-family: Amiri, 'cursive';
+    text-align: center;
+}
+
+/* Custom Scrollbar */
+.dropdown-menu::-webkit-scrollbar {
+    width: 6px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+    background-color: #2196F3; /* Custom color for scrollbar */
+    border-radius: 4px;
+}
+
+.dropdown-menu::-webkit-scrollbar-track {
+    background-color: #e9ecef;
+}
+
+.dropdown-item:hover {
+    background-color: #e1f5fe;
+    color: #2196F3;
+    cursor: pointer;
+}
+
+
+.notification-container {
+    position: relative;
+}
+
+.notification-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #dd3a3a;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    z-index: 1;
+}
+

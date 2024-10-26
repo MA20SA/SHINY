@@ -1,0 +1,128 @@
+.discount{
+    width: 100%;
+    margin: auto;
+    height: 500px;
+    /*border: 1px solid red;*/
+    position: relative;
+    top: -100px;
+    background-color:#FAEEF6;
+    border-radius: 15px;
+}
+
+.discount select{
+    width:15%;
+    font-size: 20px;
+    text-align: center;
+    color: #0A499C;
+    position: relative;
+    right: 120px;
+    background-color: #FAEEF6;
+    border-radius: 5px 5px 5px 5px;
+    border: 2px solid #0A499C;
+    font-weight: bold;
+    top:50px;
+}
+
+.AddDiscountContainer{
+    display: flex;
+    justify-content: center; /* Center items horizontally */
+    flex-wrap: wrap; /* Allow cards to wrap to the next line */
+    gap: 20px;
+    width: 96%;
+    height: 550px;
+    margin: auto;
+    position: relative;
+    top:40px;
+}
+.khasem{
+    margin-bottom: 10px;
+}
+
+
+.AlertPagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    position: relative;
+    top: 50px;
+}
+
+.AlertPagination button {
+    background-color: #0A499C;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size:5px;
+    transition: background-color 0.3s;
+
+}
+
+.AlertPagination button:hover {
+    background-color: #073b7a;
+}
+
+.AlertPagination button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.AlertPagination span {
+    font-size: 16px;
+    color: #0A499C;
+    font-weight: bold;
+}
+
+@media (min-width : 320px) and (max-width: 768px){
+    .AddNewOwnerDiscount{
+        width: 150px!important;
+        margin-right: -30px;
+        font-size: 15px!important;
+    }
+    #DiscountOfUserView .discount{
+        /*border: 1px solid green;*/
+        position: relative;
+        top:-95px;height: 1050px;
+    }
+    #DiscountOfUserView .flowerHALL img{
+        margin-top: 10px;
+        width: 150px;
+        height: 180px;
+        position: absolute;
+        right: 120px;
+    }#DiscountOfUserView .flowerHALL2 img{
+         margin-top: 10px;
+         width: 150px;
+         height: 180px;
+         position: absolute;
+         left: 780px;
+     }#DiscountOfUserView select{
+          font-size: 15px;
+          width: 100px;
+          height: 24px;
+          margin-right: -30px;
+      }#DiscountOfUserView .salesPhoto img{
+          width: 130px;
+          z-index: 10;
+          position: relative;
+          right: 109px;
+          top:6px; visibility: hidden;
+      }#DiscountOfUserView .AlertDiscount {
+          width: 400px; height: 300px;
+          position:absolute;
+          right: 30px;
+          top: -320px;
+      }#DiscountOfUserView .AlertDiscount i {
+          position:absolute;
+          right: 20px;
+      }#DiscountOfUserView #infoUserDiscount{
+          position:relative;
+          right: 180px!important;
+      }#DiscountOfUserView #Asre3InUserDiscount{
+          position:relative;
+          right: 115px!important;
+      }
+}

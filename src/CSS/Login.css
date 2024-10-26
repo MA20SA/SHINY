@@ -1,0 +1,114 @@
+.LogInFormOut{
+    width: 100%;
+    margin: auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.LogInDiv{
+    border: 7px solid white;
+    width:35%;
+    margin: auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: #cde0ef;
+    box-shadow: 2px 2px 2px #cde0ef ;
+}
+
+.LogInDivIn{
+    background-color: white;
+    width: 95%;
+    position: relative;
+    margin: 10px;
+    padding: 10px;
+}
+.LogInDivIn form{
+    width: 100%;
+    text-align: center;
+}
+
+.LogInDivIn div input{
+    border: none;
+    border-bottom: 1px solid #0A499C;
+    width: 80% !important;
+    text-align: right;
+}
+.LogInDivIn div input:focus{
+    outline: none;
+}
+
+.logInSubmit{
+    width: 150px!important;
+    margin-top: 25px;
+    background-color: #cde0ef; /* Light blue background */
+    color: #333; /* Text color */
+    padding: 10px 20px; /* Spacing around text */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    font-weight: 500; /* Font weight */
+}
+
+.logInSubmit:hover{
+    background-color: #b3d8f1; /* Slightly darker on hover */
+}
+
+.forget{
+    margin-top: 15px;
+    color: #0A499C;
+    text-decoration: underline;
+
+}
+.LogInCouple{
+    position: absolute;
+    left: 110px;
+    z-index: 1;
+    top:50px;
+}
+.LogInCouple img{
+    height: 400px;
+}
+.LogInFlowedBlue{
+    width: 90%;
+    position: absolute;
+    right: 220px;
+    bottom:80px;
+}
+.LogInFlowedBlue img{
+    height: 300px;
+}
+.errorLogIn {
+    color: red;
+    font-size:12px;
+    text-align: right;
+    margin-right: 35px;
+    height: 0;
+}
+
+@media (min-width : 320px) and (max-width: 768px) {
+#LogInFormOutLogIn{
+    width: 920px;
+    position: relative;
+    left: 235px;
+}
+    #LogInFormOutLogIn .LogInCouple img{
+        width: 180px;
+        height: 270px;
+        position: relative;
+        left: 80px;
+        top: 110px;
+    }
+
+    #LogInFormOutLogIn .LogInFlowedBlue img{
+        width: 100px;
+        height: 190px;
+        position: relative;
+        left: 10px;
+        top: -120px;
+    }
+}

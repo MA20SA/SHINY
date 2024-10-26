@@ -1,0 +1,523 @@
+@import url(https://fonts.googleapis.com/earlyaccess/amiri.css);
+.DetailsOfHall {
+    width: 100%;
+    margin: auto;
+    /*border: 1px solid red;*/
+    position: relative;
+    top: -17px;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+
+.selectedDetailsHallVideo{
+    margin-top: -9px;
+    /*width: 96%;*/
+    width: 1050px;
+    height: 570px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    background-color: #FAEEF6;
+    /*right: 2.5%;*/
+    padding:18px 1px;
+}
+
+
+.selectedDetailsHallVideo video{
+    border-radius: 10px;
+    width: 96%;
+    object-fit: cover;
+    box-shadow: 1px 1px 1px #f8d7da;
+}
+
+.HrDetailsHall{
+    display: flex;
+    justify-content: center;
+    margin-top:5px;
+}
+
+.HrDetailsHallh1{
+    color:#0048a7;
+    font-family:'Amiri', serif;
+    text-align: center;
+    margin-top: 30px;
+    opacity: 0.8;
+    text-shadow: 2px 2px 2px gray;
+}
+
+.DetailsOfHall3Images{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    /*border: 1px solid gold;*/
+    /*background-color: #FAEEF6;*/
+    padding: 20px;
+
+}
+
+.DetailsOfHall3Images img{
+    height: 400px;
+    width: 350px;
+    /*padding-right: 10px;*/
+    /*border-radius: 15px;*/
+    /*box-shadow: 3px 3px 3px #738AA3;*/
+}
+
+.Pic1Div, .Pic2Div , .Pic3Div{
+    /*border: 1px solid cornflowerblue;*/
+    height: 400px;
+    width: 350px;
+    display: inline-block;
+    overflow: hidden;
+    padding-right: 10px;
+
+}
+
+.Pic1Div  img {
+    transition: transform 3s ease;
+    border-radius: 10%;
+    box-shadow: 2px 2px 2px #E9CEC3;
+}
+.Pic1Div:hover{
+    transform: scale(1.1);
+}
+.Pic2Div  img {
+    transition: transform 3s ease;
+    border-radius: 10%;
+    box-shadow: 2px 2px 2px #E9CEC3;
+}
+.Pic2Div:hover{
+    transform: scale(1.1);
+}
+.Pic3Div  img {
+    transition: transform 3s ease;
+    border-radius: 10%;
+    box-shadow: 2px 2px 2px #E9CEC3;
+}
+.Pic3Div:hover{
+    transform: scale(1.1);
+}
+
+.HallServicesH2{
+    font-weight: bold;
+    font-size: 50px;
+    color: #0048a7;
+    font-family:'Amiri', serif;
+    text-align: center;
+    padding-top: 10px;
+    text-decoration: underline;
+}
+.HallServices{
+    width: 100%;
+    /*border: 1px solid gold;*/
+    position: relative;
+    height: 400px;
+    top: 15px;
+    /*display: block;*/
+    display: flex;
+    justify-content: center;
+    /*background-color: #E9CEC3;*/
+    /*background-color: #FAEEF6;*/
+    padding: 20px;
+    border-radius: 15px;
+}
+.HallServices p{
+    /*border: 1px solid green;*/
+    display: flex;
+    justify-content: center;
+    margin-right: 10px;
+    background-color: #FAEEF6;
+    box-shadow: 2px 2px 2px #E9CEC3;
+    height: 50px;
+    padding-top: 10px;
+}
+.HallService1,.HallService2,.HallService3{
+    height: 230px;
+    width: 230px;
+    display: inline-block;
+    /*border: 1px solid royalblue;*/
+    margin: 40px;
+    position: relative;
+    top: -20px;
+    /*background-color: #FAEEF6;*/
+    /*overflow: hidden;*/
+    border-radius: 50%;
+}
+.HallServices img{
+    /*height: 200px;*/
+    /*width: 200px;*/
+    height: 100%;
+    width: 100%;
+    margin-bottom: 15px;
+    border-radius: 50%;
+    transition: transform 0.3s ease-in-out;
+}
+
+.HallService1:hover  img {
+    transform: scale(1.1) rotate(15deg); /* Zoom and rotate */
+    border-radius: 50%; /* Make the image itself a circle during zoom */
+}
+.HallService2:hover  img {
+     transform: scale(1.1) rotate(15deg); /* Zoom and rotate */
+     border-radius: 50%; /* Make the image itself a circle during zoom */
+}
+.HallService3:hover img {
+      transform: scale(1.1) rotate(15deg); /* Zoom and rotate */
+      border-radius: 50%; /* Make the image itself a circle during zoom */
+}
+
+
+.selectedDetailsHallName{
+    width: 90%;
+    /*border: 1px solid black;*/
+    margin: auto;
+    height: 90px;
+    position: relative;
+    /*top:-35px;*/
+    top:-25px;
+    /*background-color: #FAEEF6;*/
+}
+
+.selectedDetailsHallName h1{
+    font-weight: bold;
+    font-size: 50px;
+    color: #0048a7;
+    opacity: 0.7;
+    font-family:'Amiri', serif;
+    text-align: center;
+    position: relative;
+    /*border: 1px solid green;*/
+    top:12px;
+}
+
+.HallUnderName{
+    position: absolute;
+    height: 120px;
+    width: 400px;
+    /*border: 1px solid red;*/
+    right: 32.5%;
+    top:-10px;
+    z-index: 1;
+    transform: scaleY(-1);
+}
+.HallUnderName img{
+    height: 120px;
+    width:400px;
+}
+
+.NavGoToBookingHall{
+    display: flex;
+    justify-content: center;
+    font-size: 23px;
+    color: #0048a7;
+    width: 50%;
+    margin: auto;
+    position: relative;
+    bottom: 20px;
+    text-decoration: none;
+}
+
+.GoToBookingHall{
+    border-radius: 15px;
+    background-color:#FAEEF6;
+    width: 70%;
+    margin-top: 80px;
+    height: 50px;
+    font-weight: bold;
+    color: #0A499C;
+    font-size: 17px;
+    border: none;
+    box-shadow: 3px 3px 3px #f8d7da;
+    z-index: 5;
+}
+
+
+.GoToBookingHall:hover{
+    background-color:  #E9CEC3;
+}
+
+.HrUnderServices{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-top: 20px;
+}
+
+.wardaDetailsDiv{
+    width: 200px;
+    height: 200px;
+    z-index: -1;
+    opacity: 0.5;
+    position: absolute;
+    left: -120px;
+    bottom:150px;
+}
+
+
+.wardaDetailsDiv img{
+    width: 100%;
+    height: 100%;
+    rotate: 20deg;
+}
+.wardaDetailsDiv2{
+    width: 200px;
+    height: 200px;
+    z-index: -1;
+    opacity: 0.5;
+    position: absolute;
+    right: -120px;
+    bottom:150px;
+
+}
+
+.wardaDetailsDiv2 img{
+    width: 100%;
+    height: 100%;
+    transform: scaleX(-1);
+    rotate: -20deg;
+
+}
+
+/*/////*/
+
+.galleryDetailsHall {
+    position: relative;
+    top: 5px;
+    padding-top: 15px;
+    /*border: 1px solid #E9CEC3;*/
+    display: flex;
+    /*flex-direction: column;*/
+    justify-content: center;
+    /*align-items: center;*/
+    /*background-color: #FAEEF6;*/
+    width: 800px;
+    margin: auto;
+    /*box-shadow: 2px 2px 2px #E9CEC3;*/
+}
+
+.large-imageDetailsHall {
+    /*width: 500px; !* Size for large image *!*/
+    /*height: 610px;*/
+    width: 500px; /* Size for large image */
+    height: 500px;
+    /*height: 520px;*/
+    margin-bottom: 20px;
+    border: 2px solid #ddd;
+}
+
+.large-imageDetailsHall img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.thumbnailsDetailsHall {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    margin-right: 20px;
+}
+
+.EachThumbnailsDetailsHall {
+    /*width: 200px; !* Size for thumbnails *!*/
+    /*height: 200px;*/
+    /*width: 170px; !* Size for thumbnails *!*/
+    width: 200px; /* Size for thumbnails */
+    /*height: 170px;*/
+    height: 163px;
+    border: 2px solid #ddd;
+    cursor: pointer;
+    transition: transform 0.3s;
+    overflow: hidden;
+}
+
+.EachThumbnailsDetailsHall:hover {
+    transform: scale(1.05);
+}
+
+.EachThumbnailsDetailsHall img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.GoToEditHallByOwner{
+    width:13%;
+    height: 32px;
+    font-size: 15px;
+    text-align: center;
+    position: relative;
+    /*right: 940px;*/
+    top: 60px;
+    right: 35px !important;
+    color: #0A499C;
+    background-color: #FAEEF6;
+    border-radius: 5px 5px 5px 5px;
+    border: 2px solid #0A499C;
+    font-weight: bold;
+    bottom:10px;
+    z-index: 3;
+    margin-top: 30px;
+}
+
+.DisableHallByOwner{
+    width:7%;
+    height: 32px;
+    font-size: 13px;
+    text-align: center;
+    position: absolute;
+    right:1070px;
+    top: 165px;
+    color: red;
+    /*background-color: #FAEEF6;*/
+    background-color: white;
+    border-radius: 5px 5px 5px 5px;
+    border: 2px solid red;
+    font-weight: bold;
+    /*bottom:10px;*/
+    z-index: 3;
+    margin-top: 30px;
+}
+
+@media (min-width : 320px) and (max-width: 768px) {
+    #DetailsOfHallUser{
+        width: 90%;
+        /*border: 1px solid green;*/
+    } #DetailsOfHallUser .selectedDetailsHall{
+        width: 90%;
+        /*border: 1px solid red;*/
+        /*margin-left: 5px;*/
+    }#DetailsOfHallUser .selectedDetailsHallName h1{
+        /*border: 1px solid red;*/
+        font-size: 25px;
+        /*margin-left: 20px;*/
+    }#DetailsOfHallUser .HallUnderName img{
+        width: 200px;position: relative;
+        left:28px;
+        top:55px;
+        height: 75px;
+        /*border: 1px solid red;*/
+    }
+    #DetailsOfHallUser .selectedDetailsHallVideo{
+        margin-top: -59px;
+        /*width: 96%;*/
+        width: 350px;
+        height: 270px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        background-color: #FAEEF6;
+        /*right: 2.5%;*/
+        padding:12px 1px;
+        right: 7px;
+    }
+
+    #DetailsOfHallUser .selectedDetailsHallVideo video{
+        border-radius: 10px;
+        width: 96%;
+        object-fit: cover;
+        box-shadow: 1px 1px 1px #f8d7da;
+    }#DetailsOfHallUser .HrDetailsHallh1 h1{
+        font-size: 24px;
+    }#DetailsOfHallUser .HrDetailsHall img{
+       width: 400px;
+    /*border: 1px solid blue;*/
+    }#DetailsOfHallUser .galleryDetailsHall{
+      /*margin-top: 10px;*/
+    width: 440px;
+    height: 500px;
+    padding: 10px;
+    /*border: 1px solid pink;*/
+    position: relative;left: 40px;
+    }#DetailsOfHallUser .galleryDetailsHall .large-imageDetailsHall img{
+    width: 100%;
+    /*object-fit: cover;border: 1px solid blue;*/
+    /*margin-top: 10px;*/
+    }#DetailsOfHallUser .galleryDetailsHall .thumbnailsDetailsHall{
+    width:30%;
+    height: 500px;
+    /*border: 1px solid green;*/
+      /*margin-top: 10px;*/
+    }#DetailsOfHallUser .galleryDetailsHall .EachThumbnailsDetailsHall{
+    object-fit: cover;
+      /*margin-top: 10px;*/
+    width: 120px;
+    }#DetailsOfHallUser .HrUnderServices{
+      margin-top: 50px;
+    }#DetailsOfHallUser .HrUnderServices img{
+      width: 400px;
+    }#DetailsOfHallUser .HallServices .HallService1 {
+    width: 270px;
+    height:270px;
+    /*border: 1px solid orange;*/
+    }#DetailsOfHallUser .HallServices .HallService2 {
+    width: 270px;
+    height:270px;
+    margin-top: -10px;
+    /*border: 1px solid orange;*/
+    }#DetailsOfHallUser .HallServices .HallService3 {
+    width: 270px;
+    height:270px;
+    margin-top: -10px;
+    /*border: 1px solid orange;*/
+    }#DetailsOfHallUser .HallServices .HallService1 .img-thumbnail{
+    margin-right: 45px;
+    /*border: 1px solid orange;*/
+    }#DetailsOfHallUser .HallServices .HallService2 .img-thumbnail{
+    margin-right: 45px;
+    /*border: 1px solid orange;*/
+    }#DetailsOfHallUser .HallServices .HallService3 .img-thumbnail{
+    margin-right: 45px;
+    /*border: 1px solid orange;*/
+    }#DetailsOfHallUser .HallServices .HallService1 p{
+    width: 140px!important;
+    margin-right: 65px;
+    margin-top: -5px;
+    /*padding: -50px;*/
+    /*border: 1px solid green;*/
+    }#DetailsOfHallUser .HallServices .HallService2 p{
+    width: 140px!important;
+    margin-right: 65px;
+    margin-top: -5px;
+    /*padding: -50px;*/
+    /*border: 1px solid green;*/
+    }#DetailsOfHallUser .HallServices .HallService3 p{
+    width: 140px!important;
+    margin-right: 65px;
+    margin-top: -5px;
+    /*padding: -50px;*/
+    /*border: 1px solid green;*/
+    }#DetailsOfHallUser .HallServices img {
+    width: 170px;
+    height:170px;
+      /*margin-top: 50px;*/
+    }#DetailsOfHallUser #GoToBookingHallPage {
+      margin-top: 600px;
+    }#DetailsOfHallUser .wardaDetailsDiv img {
+    width: 130px;
+    height: 150px;
+    position: relative;
+    left: 15px;
+    }#DetailsOfHallUser .wardaDetailsDiv2 img{
+    width: 130px;
+    height: 150px;
+    position: relative;
+    right: 90px;
+    }#DetailsOfHallUser #cornerLeft img{
+    /*border: 1px solid green;*/
+    position: relative;
+    left:320px;
+    top: 9px;
+    width: 100px;
+    height: 100px;
+    }#DetailsOfHallUser #cornerRight img{
+    /*border: 1px solid green;*/
+    position: relative;
+    right: 295px;
+    bottom: -79px;
+    width: 100px;
+    height: 100px;
+    }
+}

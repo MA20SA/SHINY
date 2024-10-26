@@ -1,0 +1,131 @@
+.SignInForm{
+    width: 100%;
+    margin: auto;
+    position: relative;
+    /*right: 50px;*/
+    top: -15px;
+    /*padding: 10px;*/
+    /*border: 1px solid red;*/
+    display: flex;
+    justify-content: center;
+}
+
+.singInCouple{
+    /*border: 1px solid blue;*/
+    position: absolute;
+    left: -70px;
+    z-index: 1;
+    top:50px;
+}
+
+
+.SignInOuter{
+    border: 7px solid white;
+    width:45%;
+    margin: auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: #cde0ef;
+    box-shadow: 2px 2px 2px #cde0ef ;
+}
+
+.SignInInner{
+    background-color: white;
+    width: 95%;
+    position: relative;
+    /*box-shadow: 5px 5px 5px #E9CEC3;*/
+    /*border: 1px solid #0A499C;*/
+    margin: 10px;
+    padding: 10px;
+}
+
+.SigninFormFlower{
+    width: 90%;
+    position: relative;
+    left: -20px;
+    top:30px;
+}
+
+.SignInFlowedBlue{
+    width: 90%;
+    position: absolute;
+    right: 120px;
+}
+.SigninFormH3{
+    color: #0A499C;
+    font-family: 'Amiri', sans-serif;
+    text-align: center;
+    position: relative;
+    top: 30px;
+}
+.SignInInner form{
+    width: 100%;
+    text-align: center;
+}
+
+.SignInInner div input{
+    border: none;
+    border-bottom: 1px solid #0A499C;
+    width: 80% !important;
+    text-align: right;
+}
+.SignInInner div input:focus {
+    outline: none; /* Removes the default outline */
+}
+
+
+.SignInSubmit{
+    width: 150px!important;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    background-color: #cde0ef; /* Light blue background */
+    color: #333; /* Text color */
+    padding: 10px 20px; /* Spacing around text */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    font-weight: 500; /* Font weight */
+}
+
+.SignInSubmit:hover{
+    background-color: #b3d8f1; /* Slightly darker on hover */
+}
+
+.error {
+    color: red;
+    font-size:12px;
+    text-align: right;
+    margin-right: 45px;
+    height: 0;
+}
+@media (min-width : 320px) and (max-width: 768px) {
+    #SinINFormOutLogIn{
+        width: 710px;
+        position: relative;
+        left: 128px;
+        font-size: 14px;
+    } #SinINFormOutLogIn .SignInOuter{
+        height: 550px;
+    }#SinINFormOutLogIn .SignInInner{
+     height: 500px;
+    }
+    #SinINFormOutLogIn .singInCouple img{
+        width: 180px;
+        height: 240px;
+        position: relative;
+        left: 140px;
+        top: 250px;
+    }
+
+    #SinINFormOutLogIn .SignInFlowedBlue img{
+        width: 100px;
+        height: 210px;
+        position: relative;
+        left: 28px;
+        top:190px;
+    }
+}

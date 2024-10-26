@@ -1,0 +1,199 @@
+.halls{
+    width: 100%;
+    margin: auto;
+    /*border: 1px solid red;*/
+    position: relative;
+    top: 160px;
+    /*display: flex;*/
+    /*justify-content: center;*/
+    background-color: #FAEEF6;
+    /*z-index: 1;*/
+    border-radius: 15px;
+    /*box-shadow: 6px 2px 4px gray;*/
+}
+
+.SaveTheDate{
+    text-align: center;
+    /*border: 1px solid red;*/
+    height: 100px;
+    padding-right: 70px;
+    padding-top: 25px;
+    margin-top: 15px;
+    margin-left: 65px;
+    font-family: "Brush Script MT", fantasy;
+    font-size: 50px;
+    color: #0048a7;
+    /*text-shadow: 3px 3px 3px #E9CEC3;*/
+    /*background-color: #FAEEF6;*/
+    opacity: 0.7;
+    /*background-image: url("../images/bgR.jpeg");*/
+    /*box-shadow: 2px 2px 4px gray;*/
+}
+.MakingShine{
+    text-align: center;
+    height: 100px;
+    font-family: "Brush Script MT", fantasy;
+    color: #0048a7;
+    opacity: 0.7;
+    margin-top: -80px;
+    position: relative;
+    top: 40px;
+}
+
+.halls select{
+    width:15%;
+    font-size: 20px;
+    text-align: center;
+    position: relative;
+    right: 120px;
+    top:30px;
+    color: #0A499C;
+    background-color: #FAEEF6;
+    /*border: 3px solid #0A499C;*/
+    border-radius: 5px 5px 5px 5px;
+    border: 2px solid #0A499C;
+    font-weight: bold;
+    bottom:10px;
+    z-index: 3;
+    margin-top: 30px;
+}
+
+.AddHallContainer{
+    display: flex;
+    justify-content: center; /* Center items horizontally */
+    flex-wrap: wrap; /* Allow cards to wrap to the next line */
+    gap: 20px;
+    /*border: 3px solid #0A499C;*/
+    width: 96%;
+    /*height: 550px;*/
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+.categoriesHallBage{
+    width: 100%;
+    height: 500px;
+    margin-top: -20px;
+}
+
+.background-containerHall {
+    position: absolute;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent image repetition */
+    transition: background-image 1s ease-in-out; /* Smooth transition */
+}
+
+.flowerHALL{
+    width: 300px;
+    height: 200px;
+    /*border: 1px solid red;*/
+    position: absolute;
+    right: -120px;
+}
+
+.flowerHALL img{
+    /*rotate: 20deg;*/
+    width: 300px;
+    height: 220px;
+    /*rotate: -20deg;*/
+    position: absolute;
+    /*top: -125px;*/
+    top: -95px;
+    right: 100px;
+    transform: scaleX(-1);
+}
+
+.flowerHALL2{
+    width: 300px;
+    height: 200px;
+    /*border: 1px solid red;*/
+    position: absolute;
+    right: 935px;
+
+}
+.flowerHALL2 img{
+    width: 300px;
+    height: 220px;
+    /*rotate: -20deg;*/
+    position: absolute;
+    /*top: -125px;*/
+    top: -95px;
+    left: 100px;
+}
+.HallPagination{
+    position: relative;
+    bottom: 500px;
+}
+
+@media (min-width : 320px) and (max-width: 768px) {
+    .SaveTheDate{
+    font-size: 24px;
+    margin-right: -15px;
+   }#HallsUser .MakingShine h1{
+     font-size: 24px;
+     margin-right: -5px;
+    margin-top: 5px;
+   }
+    .background-containerHall {
+     width: 480px;
+    margin-top: -38px;
+    height: 270px;
+    margin-right: -5px;
+   }#HallsUser{
+    margin-top: -420px;
+    margin-right: -5px;
+   }#HallsUser .flowerHALL img{
+    margin-top: 10px;
+    width: 150px;
+    height: 180px;
+    position: absolute;
+    right: 120px;
+   }#HallsUser .flowerHALL2 img{
+    margin-top: 10px;
+    width: 150px;
+    height: 180px;
+    position: absolute;
+    left: 780px;
+   }#HallsUser select{
+    font-size: 15px;
+    width: 100px;
+    height: 24px;
+    margin-right: -30px;
+    }#ShowOwners .flowerHALL img{
+    margin-top: 10px;
+    width: 150px;
+    height: 180px;
+    position: absolute;
+    right: 120px;
+   }#ShowOwners .flowerHALL2 img{
+    margin-top: 10px;
+    width: 150px;
+    height: 180px;
+    position: absolute;
+    left: 780px;
+   }#DetailsOfOwners .flowerHALL img{
+    margin-top: 10px;
+    width: 150px;
+    height: 180px;
+    position: absolute;
+    right: 120px;
+   }#DetailsOfOwners .flowerHALL2 img{
+    margin-top: 10px;
+    width: 150px;
+    height: 180px;
+    position: absolute;
+    left: 780px;
+   }#ShowOwners .GoToEditHallByOwner{
+    position: absolute;
+    top: 50px;
+    right: -6px!important;
+   }
+    #HallsUser .AddHallContainer{
+        margin-right: 10px;
+    }
+}

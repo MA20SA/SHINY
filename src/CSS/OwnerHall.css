@@ -1,0 +1,50 @@
+.AddNewOwnerHall{
+    width:15%;
+    font-size: 18px;
+    text-align: center;
+    position: relative;
+    right: 120px;
+    top:-30px;
+    color: #0A499C;
+    background-color: #FAEEF6;
+    /*border: 3px solid #0A499C;*/
+    border-radius: 5px 5px 5px 5px;
+    border: 2px solid #0A499C;
+    font-weight: bold;
+    bottom:10px;
+    z-index: 3;
+    margin-top: 30px;
+}
+@media (min-width : 320px) and (max-width: 768px){
+    .AddNewOwnerHall{
+        width: 150px;
+        margin-right: -30px;
+        font-size: 15px!important;
+    }#HallsOfOwner .flowerHALL img{
+         margin-top: 10px;
+         width: 150px;
+         height: 180px;
+         position: absolute;
+         right: 120px;
+     }#HallsOfOwner .flowerHALL2 img{
+          margin-top: 10px;
+          width: 150px;
+          height: 180px;
+          position: absolute;
+          left: 780px;
+      }
+      .GoToEditHallByOwner{
+          width: 98px;
+          height: 30px;
+          position: relative;
+          top: 10px;
+          font-size: 10px!important;
+      }#DisableHallByOwnerDiv{
+          position: absolute;
+          right:-740px!important;top:-53px;
+          border: 1px solid black;
+          width: 1300px;height: 30px;
+      }.DisableHallByOwnerDiv{
+        width: 100%!important;height: 100%!important;
+      }
+}
