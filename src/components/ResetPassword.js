@@ -1,16 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import Nav from "react-bootstrap/Nav";
 import SignInAlert from "./SignInAlert";
 import axios from "axios";
 
 const ResetPassword = () => {
 
     const[resetPassword, setResetPassword] = useState({
-        "Code":""
-        ,"Pass":""
-        ,"ConfirmPass":"",
+        "Code":"",
+        "Pass":"",
+        "ConfirmPass":""
     });
-
     const [errors, setErrors] = useState({});
 
     const [emailReciveReset, setEmailReciveReset] = useState("");
@@ -70,23 +68,19 @@ const ResetPassword = () => {
                         setflagReset(true);
                         setErrors({});
                         setTimeout(()=>{
-                            window.location.href = "/LogIn"; // Redirect to home or another page
+                            window.location.href = "/LogIn";
                         },1500)
-                        console.log(response.status)
                     }
                 } catch (e) {
                     setErrors((prevErrors) => ({
                         ...prevErrors,
-                        Code: e.response?.data?.message?"الرمز غير صالح":"" || "An error occurred",
+                        Code: e.response?.data?.message ? "الرمز غير صالح":"" || "An error occurred",
                     }));
                 }
             };
             fetchHalls();
         }
     }
-
-
-
 
     return (
         <div id="ResetPassword" className="RestOut">

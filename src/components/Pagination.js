@@ -1,10 +1,12 @@
 // Pagination.js
+//CSS of it in UserBooking.CSS
+
 import React from 'react';
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
-    const maxButtons = 7;
+    const maxButtons = 7; // max of Btn Numbers
 
-    // Calculate the start and end page numbers
+    // Calculate the start and end page numbers // Floor of 3.5 is 3
     let startPage = Math.max(1, currentPage - Math.floor(maxButtons / 2));
     let endPage = Math.min(totalPages, startPage + maxButtons - 1);
 

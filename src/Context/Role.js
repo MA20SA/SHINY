@@ -4,6 +4,7 @@ import axios from "axios";
 const RoleContext = createContext();
 
 export const useRole =()=>useContext(RoleContext)
+
 export const RoleProvider= ({children})=>{
     const [Role,setRole]=useState();
     const currentRole = localStorage.getItem("authRole");
@@ -22,7 +23,7 @@ export const RoleProvider= ({children})=>{
                        }
                     }
                 } catch (e) {
-                    console.error('Error fetching halls:', e);
+                    console.error('Error fetching role:', e);
                 }
             };
             fetchRole();

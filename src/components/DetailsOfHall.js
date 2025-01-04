@@ -15,7 +15,6 @@ import SignInAlert from "./SignInAlert";
 
 const DetailsOfHall = () => {
     const {id } = useParams();
-    // const hallId = parseInt(id, 10);
 
     const [hallDetailsById, setHallDetailsById] = useState({});
     useEffect(() => {
@@ -24,13 +23,13 @@ const DetailsOfHall = () => {
         }, 0);
     }, []);
 
-    // Filter the hall based on the id
+    // get the hall details based on the id
     useEffect(() => {
         const fetchHalls = async () => {
             try {
                 const response = await axios.get(`https://shinyproject.onrender.com/hall/getHallDetails/${id}`);
                 if (response.data?.hall) {
-                    setHallDetailsById(response.data.hall); // Update state with halls
+                    setHallDetailsById(response.data.hall);
                 }
             } catch (e) {
                 console.error('Error fetching halls:', e);

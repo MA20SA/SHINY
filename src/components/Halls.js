@@ -18,7 +18,7 @@ const Halls = () => {
             try {
                 const response = await axios.get(`https://shinyproject.onrender.com/hall/`);
                 if (response.data?.halls) {
-                    setHalls(response.data.halls.filter((h)=>h.isDisabled===false)); // Update state with halls
+                    setHalls(response.data.halls.filter((h)=>h.isDisabled===false));
                     console.log(response.data.halls);
                 }
             } catch (e) {
@@ -40,7 +40,6 @@ const Halls = () => {
     const [currentPageHall, setCurrentPageHall] = useState(1);
     const CardsPerPageHall = 6; // Number of hall per page
 
-    // const [selectValue, setSelectValue] = useState("طولكرم");
     const [selectValue, setSelectValue] = useState("");
 
     const handleSelect = (event) => {
@@ -64,9 +63,8 @@ const Halls = () => {
         window.scrollTo(0, 0);
     }, []);
 
-    const role = localStorage.getItem('authRole'); // "Guest", "Registered User", "Owner", "Admin"
+    const role = localStorage.getItem('authRole');
 
-    // Render different header based on the role
     if (role === "owner") return <OwnerHall/>;
 
     return (

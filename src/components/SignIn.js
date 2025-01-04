@@ -11,13 +11,6 @@ import Aboutus from "./aboutus";
 
 const SignIn = () => {
   const [sgininInput, setsgininInput] = useState({
-      // "Email":""
-      // ,"Name":""
-      // ,"Phone":""
-      // ,"sPhone":""
-      // ,"Position":""
-      // ,"Password":""
-      // ,"ConfirmPassword":"",
       "username": "",
       "email": "",
       "Primaryphone": "",
@@ -29,7 +22,7 @@ const SignIn = () => {
   const [flag,setFlag] = useState(false);
   const [errors, setErrors] = useState({});
   const [showPasswordSignIn, setShowPasswordSignIn] = useState(false); // New state for password visibility
-  const [showPasswordSignInConfirm, setShowPasswordSignInConfirm] = useState(false); // New state for password visibility
+  const [showPasswordSignInConfirm, setShowPasswordSignInConfirm] = useState(false);
 
     function ValidationSignIn(){
 
@@ -109,11 +102,9 @@ const SignIn = () => {
                     cpassword: sgininInput.cpassword
                 });
 
-                // Check if registration was successful and handle accordingly
-                if (response.status === 201) { // Adjust based on your API response
+                // Check if registration was successful
+                if (response.status === 201) {
                     setFlag(true);
-                    // localStorage.setItem("authRole", "Registered User");
-                    // localStorage.setItem("userEmail", response.data.email); // Assuming API returns this
                     setTimeout(()=>{
                         setFlag(false);
                         setsgininInput({
@@ -149,6 +140,7 @@ const SignIn = () => {
 
                 </>
             } AlertHeight="197vh"/>
+
             <div className="singInCouple">
                 <img src={singInCouple} alt="noPic"/>
             </div>
@@ -156,6 +148,7 @@ const SignIn = () => {
             <div className="SignInFlowedBlue">
                 <img src={SignInFlowedBlue} alt="noPic"/>
             </div>
+
             <div className="SignInOuter">
                 <div className="SignInInner">
                     <div>

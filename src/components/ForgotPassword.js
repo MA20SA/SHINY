@@ -43,16 +43,14 @@ const ForgotPassword = () => {
                         setErrors({});
                         setflagForget(true);
                         setTimeout(()=>{
-                            window.location.href = "/ResetPassword"; // Redirect to home or another page
+                            window.location.href = "/ResetPassword";
                         },1500)
                     }
                 } catch (e) {
-                    console.error('Response data:', e.response.data);
-                    console.error('Response status:', e.response.status);
-                    console.error('Response headers:', e.response.headers)
                     setErrors((prevErrors) => ({
                         ...prevErrors,
-                        ForgotPassEmail: e.response?.data?.message?"البريد الإلكتروني غير صالح":"" || "An error occurred",
+                        ForgotPassEmail: e.response?.data?.message ? "البريد الإلكتروني غير صالح": "" || "An error occurred",
+                        // ForgotPassEmail: (e.response?.data?.message ? "البريد الإلكتروني غير صالح": "") || "An error occurred",
                     }));
                 }
             };
@@ -69,6 +67,7 @@ const ForgotPassword = () => {
                     راجع بريدك الإلكتروني!
                 </>
             } AlertHeight="135vh"/>
+
             <div className="ForgotDiv">
                 <div className="ForgotDivIn">
                     <form onSubmit={handleForgotSubmit} className="mt-2 pt-2">

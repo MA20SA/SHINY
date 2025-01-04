@@ -2,13 +2,9 @@
     border: 1px solid #E9CEC3;
     border-radius: 10px;
     box-shadow: 5px 5px 5px #E9CEC3;
-    /*width: 200px;*/
-    /*height: 260px;*/
-    /*width: 260px;*/
     width: 280px;
     display: inline-block;
     float: right;
-    /*background-color: #FAEEF6;*/
     background-image: url("../images/bgR.jpeg");
     position: relative;
 }

@@ -18,7 +18,7 @@ const EditProfileRegUser = () => {
         Primaryphone :'',
         position :''
     });
-
+    const [change, setChange] = useState(false);
 
     const [OldPasswordRegUser, setOldPasswordRegUser] = useState("");
     const [newPasswordRegUser, setNewPasswordRegUser] = useState("");
@@ -30,7 +30,8 @@ const EditProfileRegUser = () => {
     const [flagRegUser, setFlagRegUser] = useState(false);
 
     const{refresh,setRefresh} =useRefreshAccount();
-    // Fetch user info based on the email parameter
+
+    // Fetch user info based on the id
     useEffect(() => {
         const fetchHalls = async () => {
             try {
@@ -44,10 +45,7 @@ const EditProfileRegUser = () => {
                     setUserInfo(response.data.user);
                 }
             } catch (e) {
-                console.error('Error fetching halls:', e);
-                // console.error('Response data:', e.response.data);
-                // console.error('Response status:', e.response.status);
-                // console.error('Response headers:', e.response.headers)
+                console.error('Error fetching user:', e);
             }
         };
         fetchHalls();
@@ -122,7 +120,7 @@ const EditProfileRegUser = () => {
 
                     }
                 } catch (e) {
-                    console.error('Error fetching halls:', e);
+                    console.error('Error Editing user:', e);
                 }
             };
             fetchHalls();
@@ -181,7 +179,7 @@ const EditProfileRegUser = () => {
                         }, 1000);
                     }
                 } catch (e) {
-                    console.error('Error fetching halls:', e);
+                    console.error('Error editing password:', e);
                     if(e.response?.data?.message === "Old password is incorrect"){
                         setErrorsEditPasswordRegUser({
                             ...ErrorsEditPasswordRegUser,
@@ -194,8 +192,6 @@ const EditProfileRegUser = () => {
         }
     }
 
-
-    const [change, setChange] = useState(false)
     const isPasswordFormDirty = () => {
         return OldPasswordRegUser || newPasswordRegUser || newPasswordRegUserConfirm;
     };
@@ -206,6 +202,7 @@ const EditProfileRegUser = () => {
 
     return (
         <div id="EditProfileRegUser" style={{position:"relative"}}>
+
             <div id="EditProfileRegUserBtn1" style={{
                 display:"inline",
                 position: "relative",
@@ -222,7 +219,9 @@ const EditProfileRegUser = () => {
                          onClick={(e)=>{
                     setFlagToInformationRegister(true);
                     setFlagToInformationRegisterPrivacy(false);
-                }}><i className="fa-solid fa-user"></i></button>
+                }}>
+                         <i className="fa-solid fa-user"></i>
+                </button>
             </div>
 
             <div id="EditProfileRegUserProgress" style={{
@@ -259,14 +258,17 @@ const EditProfileRegUser = () => {
                 }}>
                     <i  className="fa-solid fa-lock"></i>
                 </button>
-
             </div>
-            { flagToInformationRegister && <div className="EditProfileFormRegUser">
+
+            { flagToInformationRegister &&
+            <div className="EditProfileFormRegUser">
             <div className="EditProfileFormRegUserOuter">
                 <div className="EditProfileFormRegUserInner">
+
                     <div style={{position:"absolute",right:"-462px",top:"-35px"}}>
                         <SignInAlert flag={flagRegUser} SignInAlertText="تم تحديث بياناتك بنجاح!" AlertHeight="176vh" />
                     </div>
+
                     <h3 className="EditProfileFormRegUserH3">تعديل الملف الشخصي</h3>
                     <form onSubmit={handleSubmitEditRegUser} className="mt-2 pt-2">
                         <div>
@@ -341,7 +343,8 @@ const EditProfileRegUser = () => {
                     </form>
                 </div>
             </div>
-          </div>}
+            </div>
+            }
 
 
             {flagToInformationRegisterPrivacy &&

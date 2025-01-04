@@ -8,7 +8,6 @@ const Footer = () => {
         <div className="supFooter">
             <div className="footer">
                 <div className="FooterDiv1">
-                    {/*<img className="singleflowerFooter" src={singleflowerFooter} alt="noPic"/>*/}
                     <img className="singleflowerFooter2" src={singleflowerFooter} alt="noPic"/>
                     <p>,There is only one happiness in this life
                         <br/>
@@ -44,12 +43,10 @@ const Footer = () => {
                 </div>
 
                 <div className="FooterDiv3">
-                    {/*<img className="logoForFooter" src={logoForFooter} alt="noPic"/>*/}
                     <h4>SHINY</h4>
                     <h5>Weeding & Event</h5>
                     <img className="UnderLogoInFooter" src={UnderLogoInFooter} alt="noPic"/>
                     <div className="FooterDiv3Text">
-                        {/*<h6>Welcome!</h6>*/}
                         <p>Save your the date year with SHINY..</p>
                     </div>
 
@@ -61,7 +58,6 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            {/*<p className="allRight"><b>ALL RIGHT RESERVED</b></p>*/}
         </div>
 
     )

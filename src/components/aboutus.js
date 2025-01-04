@@ -62,11 +62,12 @@ const Aboutus = () => {
                     </ul>
                     <br/><br/> <br/> <br/> <br/>
                     <div className="OverallRating">
-                        <div className="NoVisitor"><h1 style={{fontWeight: "bold"}}><i className="fa-solid fa-plus "
-                                                                                       style={{
-                                                                                           fontSize: "30px",
-                                                                                           opacity: "0.6"
-                                                                                       }}>
+                        <div className="NoVisitor"><h1 style={{fontWeight: "bold"}}>
+                            <i className="fa-solid fa-plus "
+                            style={{
+                            fontSize: "30px",
+                            opacity: "0.6"
+                            }}>
                         </i>500
                         </h1>
                             <p><b>إجمالي الزوّار</b></p>

@@ -2,7 +2,7 @@ import React from 'react';
 
 const Rating = ({ rating }) => {
     const fullStars = Math.floor(rating);  // Number of full stars
-    const halfStar = rating % 1 >= 0.5;    // Check if there’s a half star
+    const halfStar = rating % 1 >= 0.5;    // Check if there’s a half star (0 OR 1)
     const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);  // Remaining empty stars
 
     return (

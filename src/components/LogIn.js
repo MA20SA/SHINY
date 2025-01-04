@@ -10,10 +10,9 @@ import Aboutus from "./aboutus";
 
 const LogIn = () => {
 
-    const[logInInput, setlogInInput] = useState({
-        "email":""
-        ,"password":""
-
+    const [logInInput, setlogInInput] = useState({
+        "email":"",
+        "password":""
     });
     const [errors, setErrors] = useState({});
     const [showPassword, setShowPassword] = useState(false); // New state for password visibility
@@ -63,9 +62,9 @@ const LogIn = () => {
 
                     const { role, id } = decoded;
                     localStorage.setItem("authRole", role);
-                    localStorage.setItem("userID", id); // Store user email for later use
+                    localStorage.setItem("userID", id);
                     setTimeout(()=>{
-                        window.location.href = "/AboutUs"; // Redirect to home or another page
+                        window.location.href = "/AboutUs";
                     },1000)
                 }
 
@@ -83,7 +82,6 @@ const LogIn = () => {
         <div id="LogInFormOutLogIn" className="LogInFormOut">
             <div className="LogInCouple">
                 <img src={LogInCouple} alt="noPic"/>
-
             </div>
 
             <div className="LogInFlowedBlue">
@@ -93,9 +91,11 @@ const LogIn = () => {
             <div className="LogInDiv">
                 <div className="LogInDivIn">
                     <div>
+                        {/*CSS of SignIN*/}
                         <h3 className="SigninFormH3">أهلاً بك </h3>
                         <img className="SigninFormFlower" src={SigninFormFlower} alt="noPic"/>
                     </div>
+
                     <form onSubmit={handleLogInSubmit} className="mt-2 pt-2">
                         <div>
                             {/*<label htmlFor="EmailId">البريد الإلكتروني:</label>*/}

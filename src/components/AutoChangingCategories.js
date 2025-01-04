@@ -37,7 +37,8 @@ const AutoChangingCategories = () => {
 
     const displayedHalls =
         halls.length > 0
-            ? Array.from({ length: Math.min(3, halls.length) }, (_, i) => halls[(currentIndex + i) % halls.length])
+            ? Array.from({ length: Math.min(3, halls.length) },
+                (_, i) => halls[(currentIndex + i) % halls.length])
             : [];
 
     return (

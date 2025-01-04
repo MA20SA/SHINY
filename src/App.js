@@ -39,6 +39,7 @@ function App() {
       <div className="App">
           <Header/>
           <Timedate/>
+
           <Container>
               <Routes>
                   <Route path="*" element={<Aboutus/>}/>
@@ -65,12 +66,12 @@ function App() {
                   <Route path="/ShowOwnerBookingByAdmin/:id" element={<ShowOwnerBookingByAdmin/>}/>
                   <Route path="/CreateAdminDiscount" element={<CreateAdminDiscount/>}/>
               </Routes>
-
           </Container>
 
-          <Footer/>
 
+          <Footer/>
       </div>
+
       </RefreshAccountProvider>
       </RoleProvider>
   );

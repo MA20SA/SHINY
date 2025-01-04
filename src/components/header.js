@@ -11,7 +11,7 @@ import AdminHeader from "./Headers/AdminHeader";
 const Header = () => {
 
     // Retrieve role from localStorage
-    const role = localStorage.getItem('authRole'); // "Guest", "Registered User", "Owner", "Admin"
+    const role = localStorage.getItem('authRole');
 
     // Render different header based on the role
     if (role === "user") return <UserHeader/>;
@@ -19,10 +19,13 @@ const Header = () => {
     if (role === "admin") return <AdminHeader/>;
 
     return (
-        <NavbarBs sticky="top" className="header navbar ">
+        <NavbarBs sticky="top" className="header navbar">
             <Container className="container-fluid ">
                 <Nav>
-                    <Nav.Link href="/AboutUs"><img className="logoRemove" src={logoremovebg} alt="logo"/></Nav.Link>
+
+                    <Nav.Link href="/AboutUs">
+                        <img className="logoRemove" src={logoremovebg} alt="logo"/>
+                    </Nav.Link>
 
                     <div className="divHeader">
 
@@ -35,12 +38,13 @@ const Header = () => {
                                 </Button>
                             </Nav.Link>
 
-                            < Nav.Link href="/LogIn"><Button className="btn1">
+                            < Nav.Link href="/LogIn">
+                                <Button className="btn1">
                                 <i className="fa-solid fa-user"></i>
                                 <span> </span>
                                 <b> تسجيل الدخول</b>
-
-                            </Button></Nav.Link>
+                                </Button>
+                            </Nav.Link>
                             </div>
 
                             <div className="divHeaderCenter">

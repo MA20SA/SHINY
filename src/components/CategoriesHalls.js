@@ -18,13 +18,7 @@ const categories = [
     },{
         imgSrc:picD
 
-    },
-    // {
-    //     // imgSrc:MasayaOut4
-    // },
-    // {
-    //     // imgSrc:MasayaOut3
-    // },
+    }
 ];
 
 const CategoriesHalls = () => {

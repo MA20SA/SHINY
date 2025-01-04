@@ -3,16 +3,12 @@
     margin: 25px auto;
     padding: 15px;
     background-color: white;
-    /*background-color: white;*/
-    /*box-shadow: 2px 2px 2px #cde0ef ;*/
     border:17px solid #cde0ef ;
     border-radius: 8px;
-    /*text-align: center;*/
 }
 
 .FormAddNewOwnerHall div input{
     display: flex;
-    /*margin-bottom: 15px;*/
     border: none;
     border-bottom: 1px solid #738AA3;
     width: 70% !important;
@@ -77,6 +73,7 @@
     gap: 10px;
     margin-bottom: 10px;
 }
+
 .deleteOwnerHall{
     width: 80px!important;
     display: inline;
@@ -99,8 +96,7 @@
     right: 85px;
 }
 
-.photoInput
-{
+.photoInput{
     background-color: #cde0ef; /* Light blue background */
     color: #333; /* Text color */
     border-radius: 4px; /* Rounded corners */

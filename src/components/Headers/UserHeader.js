@@ -4,7 +4,6 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import logoremovebg from "../../images/logo-removebg.png";
 import {Dropdown, Button} from 'react-bootstrap';
-import EditProfileRegUser from "../EditProfile/EditProfileRegUser";
 import axios from "axios";
 import {useRefreshAccount} from "../../Context/RefreshAccount";
 import {useRole} from "../../Context/Role";
@@ -18,20 +17,9 @@ const UserHeader = () => {
     };
 
     const [notifications, setNotifications] = useState([
-        // { id: 1, message: "تم تأكيد حفل خطوبتك في صالة ريم البوادي." },
-        // { id: 2, message: "تم تأكيد حفل زفافك في صالة سان موريس." },
-        // { id: 3, message: "تم تأكيد حفل زفافك في صالة سان موريس." },
-        // { id: 4, message: "تم تأكيد حفل زفافك في صالة سان موريس." },
-        // { id: 5, message: "تم تأكيد حفل زفافك في صالة سان موريس." },
-        // { id: 6, message: "تم تأكيد حفل زفافك في صالة سان موريس." },
-        // { id: 7, message: "تم تأكيد حفل زفافك في صالة سان موريس." },
+
     ]);
     const [unreadCount, setUnreadCount] = useState(0);
-
-    const{refresh} =useRefreshAccount();
-    const{Role} =useRole();
-
-
     useEffect(() => {
         const interval = setInterval(() => {
             const newNotification = {
@@ -50,7 +38,6 @@ const UserHeader = () => {
         return () => clearInterval(interval);
     }, []);
 
-
     const handleDropdownToggle = () => {
         setNotifications((prevNotifications) =>
             prevNotifications.map((notif) => ({ ...notif, isRead: true }))
@@ -62,9 +49,12 @@ const UserHeader = () => {
     const [userNameById,setUserNameById] = useState('');
     const token = localStorage.getItem("token");
 
+    const{refresh} =useRefreshAccount();
+    const{Role} =useRole();
+
     useEffect(() => {
         const USERIDInHeader = localStorage.getItem("userID");
-        // Retrieve email from localStorage and set it to state
+
         if (USERIDInHeader) {
             setUserIdToEdit(USERIDInHeader);
             const fetchHalls = async () => {
@@ -79,14 +69,14 @@ const UserHeader = () => {
                         setUserNameById(response.data.user.username);
                     }
                 } catch (e) {
-                    console.error('Error fetching halls:', e);
-                    console.error('Error fetching halls:', e.response.data.message);
+                    console.error('Error fetching user:', e);
                 }
             };
             fetchHalls();
         }
     }, [refresh]);
 
+    // IF Owner Added By Admin
     useEffect(() => {
         if(Role==="owner"){
             handleLogout();
@@ -132,7 +122,7 @@ const UserHeader = () => {
                                     </Dropdown.Menu>
                                 </Dropdown>
 
-                                {/*notReady*/}
+
 
                                  < Nav.Link href={`/EditProfileRegUser/${UserIdToEdit}`}>
                                      <Button id="editReg" className="btnUserHeader">

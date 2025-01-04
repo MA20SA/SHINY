@@ -4,9 +4,6 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import logoremovebg from "../../images/logo-removebg.png";
 import {Dropdown, Button} from 'react-bootstrap';
-import EditProfileRegUser from "../EditProfile/EditProfileRegUser";
-import OwnerDiscount from "../OwnerDiscount";
-import OwnerShowBooking from "../OwnerShowBooking";
 import axios from "axios";
 import {useRefreshAccount} from "../../Context/RefreshAccount";
 
@@ -62,7 +59,6 @@ const OwnerHeader = () => {
     const{refresh} =useRefreshAccount();
     useEffect(() => {
         const OwnerIDInHeader = localStorage.getItem("userID");
-        // Retrieve email from localStorage and set it to state
         if (OwnerIDInHeader) {
             setOwnerIdToEdit(OwnerIDInHeader);
             const fetchHalls = async () => {

@@ -9,7 +9,8 @@ const SignInAlert = ({flag, SignInAlertText,AlertHeight}) => {
         setVisible(false);
     }
     const AlertHeightStyle = {
-        height: AlertHeight};
+        height: AlertHeight
+    };
 
     if(flag){
         return (

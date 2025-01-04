@@ -11,9 +11,9 @@ body{
     box-shadow: 3px 3px 3px #E9CEC3;
     width: 100%;
     background-color: white;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+    /*background-repeat: no-repeat;*/
+    /*background-attachment: fixed;*/
+    /*background-size: cover;*/
 }
 
 .logoRemove {
@@ -47,8 +47,8 @@ body{
     margin-top: 5px;
     float: right;
     margin-right: -120px;
-    /*border: 1px red solid;*/
 }
+
 .btn1 , .btn2{
     border-radius: 30px;
     background-color: white;
@@ -65,10 +65,10 @@ body{
     font-size: 16px;
 }
 
-header button:active {
-    background-color: #0A499C; /* Keep the original color on active */
-    transform: translateY(0); /* Remove lift effect on click */
-}
+/*header button:active {*/
+/*    background-color: #0A499C; !* Keep the original color on active *!*/
+/*    transform: translateY(0); !* Remove lift effect on click *!*/
+/*}*/
 
 .timedate p{
     padding: 5px;
@@ -93,6 +93,7 @@ header button:active {
     position: relative;
     top:-15px;
 }
+
 .AboutR{
     width: 600px;
     height: 440px;
@@ -194,7 +195,6 @@ header button:active {
 
 .FooterDiv1, .FooterDiv2 , .FooterDiv3{
     display: inline-block;
-    /*border: 1px solid pink;*/
     width: 30%;
     height:90%;
     margin: 10px;

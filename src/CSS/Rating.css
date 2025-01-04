@@ -11,7 +11,7 @@
 }
 
 .half {
-    background: linear-gradient(90deg, gold 50%, #e0e0e0 50%);  /* Half-gold, half-gray */
+    background: linear-gradient(90deg, gold 50%, #e0e0e0 50%);  /* Half-Left-gold, half-Right-gray */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }

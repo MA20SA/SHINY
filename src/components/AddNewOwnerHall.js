@@ -8,7 +8,6 @@ const AddNewOwnerHall = () => {
     const token = localStorage.getItem("token");
     const [DataOfAddNewOwnerHall, setDataOfAddNewOwnerHall] = useState({
         hallName: '',
-        // city:'',
         address: '',
         occasions: [{ occasion: 'أخرى', price: '', deposit:'',addOneHour:'' }], // Default first occasion
         services: {
@@ -62,11 +61,16 @@ const AddNewOwnerHall = () => {
             if (!occasion.price  || (Number(occasion.price) <= 0)) errors[`occasionPrice${index}`] = "السعر مطلوب";
             if (!occasion.deposit  || (Number(occasion.deposit) > Number(occasion.price) ) ) errors[`occasionDeposit${index}`] = "العربون مطلوب";
             if (!occasion.addOneHour || (Number(occasion.addOneHour) > Number(occasion.price) ) ) errors[`occasionAddOneHour${index}`] = "الحقل مطلوب";
-            if (index > 0 && (occasion.occasion !=="أخرى" || occasion.occasion !=="زفاف" || occasion.occasion !=="خطوبة" || occasion.occasion !=="تخرج" ||
-                occasion.occasion !=="ولائم" || occasion.occasion !=="حناء" || occasion.occasion !=="أعياد ميلاد" ||
+            if ((index > 0 && !occasion.occasion) || (occasion.occasion !=="أخرى" && occasion.occasion !=="زفاف" && occasion.occasion !=="خطوبة" && occasion.occasion !=="تخرج" &&
+                occasion.occasion !=="ولائم" && occasion.occasion !=="حناء" && occasion.occasion !=="أعياد ميلاد" &&
                 occasion.occasion !=="وداع عزوبية" )
-                && !occasion.occasion && occasion.occasion.match(/^[\u0600-\u06FF\s]+$/)) errors[`occasionName${index}`] = "اسم المناسبة مطلوب";
-        });
+                || !occasion.occasion.match(/^[\u0600-\u06FF\s]+$/)) errors[`occasionName${index}`] = "اسم المناسبة مطلوب";
+        // if (index > 0 && (occasion.occasion !=="أخرى" || occasion.occasion !=="زفاف" || occasion.occasion !=="خطوبة" || occasion.occasion !=="تخرج" ||
+        //         occasion.occasion !=="ولائم" || occasion.occasion !=="حناء" || occasion.occasion !=="أعياد ميلاد" ||
+        //         occasion.occasion !=="وداع عزوبية" )
+        //         && !occasion.occasion && occasion.occasion.match(/^[\u0600-\u06FF\s]+$/)) errors[`occasionName${index}`] = "اسم المناسبة مطلوب";
+        //
+            });
 
 
         if (!DataOfAddNewOwnerHall.contactNumber) errors.contactNumber = "رقم للتواصل مطلوب";
@@ -297,6 +301,7 @@ const AddNewOwnerHall = () => {
                         <p className="error">{ErrorsDataOfAddNewOwnerHall.address}</p>}
                 </div>
 
+
                 {DataOfAddNewOwnerHall.occasions.map((occ, index) => (
                         <div key={index} className="occasion-row">
                             {index === 0 ? (
@@ -360,7 +365,7 @@ const AddNewOwnerHall = () => {
                                         color:"green"
                                     }}> المناسبات (زفاف، خطوبة، تخرج، ولائم، حناء، أعياد ميلاد، وداع عزوبية) </p>
                                     {ErrorsDataOfAddNewOwnerHall[`occasionName${index}`] && (
-                                        <p className="error">{ErrorsDataOfAddNewOwnerHall[`occasionName${index}`]}</p>
+                                        <p className="error" style={{marginTop:"-8px"}}>{ErrorsDataOfAddNewOwnerHall[`occasionName${index}`]}</p>
                                     )}
                                     <label>السعر(₪):</label>
                                     <input
@@ -422,7 +427,7 @@ const AddNewOwnerHall = () => {
                 </button>
 
 
-                {/* Dynamic Services */}
+                {/* Services */}
                 <div className="services-section">
                     <br/>
                     <label>الخدمات:</label>
@@ -528,6 +533,7 @@ const AddNewOwnerHall = () => {
 
                 <input type="submit" value="إرسال"/>
             </form>
+
             <div style={{marginRight: "-130px", position: "absolute", top: "165px",zIndex:"10"}}>
                 {flag && <SignInAlert flag={flag} SignInAlertText="تم إنشاء الصالة بنجاح!" AlertHeight="304vh"/>}
             </div>
