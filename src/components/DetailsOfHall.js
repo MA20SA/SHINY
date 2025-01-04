@@ -108,7 +108,7 @@ const DetailsOfHall = () => {
     return (
         <div>
 
-            {(roleInDetailsOfHall === "owner") && (hallDetailsById.isDisabled===false) ?
+            {(roleInDetailsOfHall === "owner") && localStorage.getItem("userID")===hallDetailsById.createdBy && (hallDetailsById.isDisabled===false) ?
                 <div style={{zIndex:"100"}}>
                 <Link to={`/EditHallByOwner/${id}`}>
                     <button className="GoToEditHallByOwner"><i style={{fontSize: "16px"}}
@@ -135,7 +135,7 @@ const DetailsOfHall = () => {
                 <></>
             }
 
-            {roleInDetailsOfHall === "owner" ?
+            {(roleInDetailsOfHall === "owner" && localStorage.getItem("userID")===hallDetailsById.createdBy)?
                 <div id="DisableHallByOwnerDiv">
                     {hallDetailsById.isDisabled===false?
                         <div>
@@ -324,7 +324,7 @@ const DetailsOfHall = () => {
                     </div>
 
 
-                    {roleInDetailsOfHall === "admin" ?
+                    {(roleInDetailsOfHall === "admin" || (localStorage.getItem("userID")!==hallDetailsById.createdBy && roleInDetailsOfHall === "owner" ))?
                         <>
                             <br/>
                             <br/>
