@@ -6,21 +6,31 @@ import SignInAlert from "./SignInAlert";
 
 const EditHallByOwner = () => {
     const {id } = useParams();
-    const [FlageChange,setFlageGhange]=useState(false);
-    //Firstly, must Fetch Hall Information By use effect where the hallId Changes
-    const [DataOfEditOwnerHall, setDataOfEditOwnerHall] = useState({
-    });
-    const [VideoChange,setVideoChange]=useState(false);
-    const [MainImageChange,setMainImageChange]=useState(false);
 
+    const [FlageChange,setFlageGhange]=useState(false);
+
+    const [FlagSubmit,setFlagSubmit] = useState(false);
+    const [SuccessDeleteEvents,setSuccessDeleteEvents]=useState(false);
+    const [SuccessActiveEvents,setSuccessActiveEvents]=useState(false);
+
+    const [DataOfEditOwnerHall, setDataOfEditOwnerHall] = useState({});
     const [ErrorsDataOfEditOwnerHall, setErrorsDataOfEditOwnerHall] = useState({});
+
+    const [OldImages,setOldImages]= useState([]);
+    const [MainImageChange,setMainImageChange]=useState(false);
+    const [SubImageChange,setSubImageChange]=useState([false,false,false]);
+
+    const [VideoChange,setVideoChange]=useState(false);
     const [DeleteEvent,setDeleteEvent]=useState(false);
 
     const [ActualEvents,setActualEvents] = useState(0);
+    const [VisibleEvents,setVisibleEvents] = useState(2);
+
+
+    //Appear Firstly when open the page --> Loading
     const [Loading,setLoading]=useState(true);
 
-    const [FlagSubmit,setFlagSubmit] = useState(false);
-
+    //Firstly Get Info Of Hall By ID
     useEffect(() => {
         window.scrollTo(0, 0);
         const fetchHalls = async () => {
@@ -30,14 +40,14 @@ const EditHallByOwner = () => {
                         Authorization:`shiny__${localStorage.getItem("token")}`
                     }
                 });
-                // if (response.data?.hall) {
                 if (response?.data?.hall) {
                     setOldImages(response.data.hall.subImages.map((i)=>{
                         return i.public_id;
                     }));
+
+                    // get length of events
                     setActualEvents(response.data.hall.events.length);
-                    console.log(response.data)
-                    setDataOfEditOwnerHall(response.data.hall); // Update state with halls
+                    setDataOfEditOwnerHall(response.data.hall);
                 }
             } catch (e) {
                 console.error('Error fetching halls:', e);
@@ -46,22 +56,112 @@ const EditHallByOwner = () => {
         fetchHalls().finally(()=>{setLoading(false)});
     }, [DeleteEvent]);
 
+    const navigate = useNavigate();
+    useEffect(()=>{
+        if(FlagSubmit){
+            setTimeout(()=>{
+                navigate(`/DetailsOfHall/${id}`);
+            },3000)
+        }
+    },[FlagSubmit])
+
     // MainInfo
     const handleChangeInEditOwnerHall = (e, index, field, type) => {
         setFlageGhange(true);
         const { value } = e.target;
-        console.log(e,index,field,type)
         if (type === 'occasions') {
             const newOccasions = [...DataOfEditOwnerHall.events];
             newOccasions[index][field] = value || ''; // Ensure value is an empty string if undefined
             setDataOfEditOwnerHall({ ...DataOfEditOwnerHall, events: newOccasions });
         } else {
-            console.log(value)
             setDataOfEditOwnerHall({ ...DataOfEditOwnerHall, [field]: value || '' }); // Ensure value is an empty string if undefined
         }
     };
-    const [SubImageChange,setSubImageChange]=useState([false,false,false]);
-    const [OldImages,setOldImages]= useState([]);
+
+    //Check if event already made or not (come from db or not)
+    function checkEvents(eventId){
+        return eventId === undefined;
+    }
+
+    const ActiveOccasionOfEditOwnerHall = (eventId) => {
+        const ActiveEvent = async () => {
+            try {
+                const response = await axios.patch(`https://shinyproject.onrender.com/hall/${id}/event/activate/${eventId}`,
+                    {},
+                    {
+                        headers:{
+                            Authorization: `shiny__${localStorage.getItem('token')}`,
+                        }
+                    });
+                if (response.data) {
+                    setSuccessActiveEvents(true);
+                    setTimeout(()=>{
+                        setSuccessActiveEvents(false);
+                        setDeleteEvent(!DeleteEvent);
+                    },1000)
+
+                }
+            } catch (e) {
+                console.error('Error Activate event:', e);
+            }
+        };
+        ActiveEvent();
+    }
+    const deleteOccasionOfEditOwnerHall = (eventId,name) => {
+        if(checkEvents(eventId)){
+            const eventsToSubmit= DataOfEditOwnerHall.events.filter((o) => {
+                return o.name !== name;
+            })
+            setDataOfEditOwnerHall({ ...DataOfEditOwnerHall, events: eventsToSubmit });
+        }
+        else{
+            const deleteEvents = async () => {
+                try {
+                    const response = await axios.patch(`https://shinyproject.onrender.com/hall/${id}/event/deactivate/${eventId}`,
+                        {},{
+                            headers:{
+                                Authorization: `shiny__${localStorage.getItem('token')}`
+                            }
+                        });
+                    if (response.data) {
+                        setSuccessDeleteEvents(true);
+                        setTimeout(()=>{
+                            setSuccessDeleteEvents(false);
+                            setDeleteEvent(!DeleteEvent);
+                        },1000)
+                    }
+                } catch (e) {
+                    console.error('Error delete event:', e);
+                }
+            };
+            deleteEvents();
+        }
+    };
+
+    // Handle adding more occasions
+    const addOccasionOfEditOwnerHall = () => {
+        setFlageGhange(true);
+        setDataOfEditOwnerHall((prevState) => ({
+            ...prevState,
+            events: [...prevState.events, { name: '', price: '',Arbon:'',priceOneHour:'' }],
+        }));
+        setVisibleEvents(DataOfEditOwnerHall.events.length + 1);
+    };
+
+    const handleServiceChangeOfEditOwnerHall = (field,value) => {
+        setFlageGhange(true);
+        setDataOfEditOwnerHall({
+            ...DataOfEditOwnerHall,
+            [field]: !value,
+        });
+    };
+
+    function handleMainImageChange(e){
+        setFlageGhange(true);
+        const newImages = e.target.files[0];
+        setDataOfEditOwnerHall({ ...DataOfEditOwnerHall, hallImage: newImages });
+        setMainImageChange(true);
+    }
 
     // SubImage
     const handleImageChangeOfEditOwnerHall = (e, index) => {
@@ -76,13 +176,6 @@ const EditHallByOwner = () => {
         });
     };
 
-    const handleServiceChangeOfEditOwnerHall = (field,value) => {
-        setFlageGhange(true);
-        setDataOfEditOwnerHall({
-            ...DataOfEditOwnerHall,
-            [field]: !value,
-        });
-    };
 
     const validationDataOfEditOwnerHall = () => {
         const errors = {};
@@ -106,14 +199,23 @@ const EditHallByOwner = () => {
             if (!occasion.price) errors[`occasionPrice${index}`] = "السعر مطلوب";
             if (!occasion.Arbon) errors[`occasionDeposit${index}`] = "العربون مطلوب";
             if (!occasion.priceOneHour) errors[`occasionAddOneHour${index}`] = "الحقل مطلوب";
-            if (index > 0 &&
-                (occasion.name !=="أخرى" ||
-                    occasion.name !=="زفاف" || occasion.name !=="خطوبة"
-                    || occasion.name !=="تخرج" ||
-                    occasion.name !=="ولائم" || occasion.name !=="حناء" || occasion.name !=="أعياد ميلاد" ||
+            if ((index > 0 && !occasion.name)
+                || (occasion.name !=="أخرى" && occasion.name !=="زفاف" && occasion.name !=="خطوبة" && occasion.name !=="تخرج" &&
+                    occasion.name !=="ولائم" && occasion.name !=="حناء" && occasion.name !=="أعياد ميلاد" &&
                     occasion.name !=="وداع عزوبية" )
-                && !occasion.name && occasion.name.match(/^[\u0600-\u06FF\s]+$/)) errors[`occasionName${index}`] = "اسم المناسبة مطلوب";
-        });
+                || !occasion.name.match(/^[\u0600-\u06FF\s]+$/))
+
+                errors[`occasionName${index}`] = "اسم المناسبة مطلوب";
+
+        //     if (index > 0 &&
+        //         (occasion.name !=="أخرى" ||
+        //             occasion.name !=="زفاف" || occasion.name !=="خطوبة"
+        //             || occasion.name !=="تخرج" ||
+        //             occasion.name !=="ولائم" || occasion.name !=="حناء" || occasion.name !=="أعياد ميلاد" ||
+        //             occasion.name !=="وداع عزوبية" )
+        //         && !occasion.name && occasion.name.match(/^[\u0600-\u06FF\s]+$/)) errors[`occasionName${index}`] = "اسم المناسبة مطلوب";
+        //
+            });
 
 
         if (!DataOfEditOwnerHall.contactPhone) errors.contactNumber = "رقم للتواصل مطلوب";
@@ -144,72 +246,6 @@ const EditHallByOwner = () => {
         return Object.keys(errors).length === 0;
     };
 
-    const [SuccessDeleteEvents,setSuccessDeleteEvents]=useState(false);
-    const [SuccessActiveEvents,setSuccessActiveEvents]=useState(false);
-
-    const deleteOccasionOfEditOwnerHall = (eventId,name) => {
-        if(checkEvents(eventId)){
-            const eventsToSubmit= DataOfEditOwnerHall.events.filter((o) => {
-                return o.name !== name;
-            })
-            setDataOfEditOwnerHall({ ...DataOfEditOwnerHall, events: eventsToSubmit });
-        }
-        else{
-        const deleteEvents = async () => {
-            try {
-                const response = await axios.patch(`https://shinyproject.onrender.com/hall/${id}/event/deactivate/${eventId}`,
-                    {},{
-                    headers:{
-                        Authorization: `shiny__${localStorage.getItem('token')}`
-                    }
-                    });
-                if (response.data) {
-                    setSuccessDeleteEvents(true);
-                    setTimeout(()=>{
-                        setSuccessDeleteEvents(false);
-                        setDeleteEvent(!DeleteEvent);
-                    },1000)
-                }
-            } catch (e) {
-                console.error('Error fetching halls:', e);
-            }
-        };
-        deleteEvents();
-        }
-    };
-    const ActiveOccasionOfEditOwnerHall = (eventId) => {
-        const ActiveEvent = async () => {
-            try {
-                const response = await axios.patch(`https://shinyproject.onrender.com/hall/${id}/event/activate/${eventId}`,
-                    {},
-                    {
-                        headers:{
-                            Authorization: `shiny__${localStorage.getItem('token')}`,
-                        }
-                    });
-                if (response.data) {
-                    setSuccessActiveEvents(true);
-                    setTimeout(()=>{
-                        setSuccessActiveEvents(false);
-                        setDeleteEvent(!DeleteEvent);
-                    },1000)
-
-                }
-            } catch (e) {
-                console.error('Error fetching halls:', e);
-            }
-        };
-        ActiveEvent();
-    }
-    // Handle adding more occasions
-    const addOccasionOfEditOwnerHall = () => {
-        setFlageGhange(true);
-        setDataOfEditOwnerHall((prevState) => ({
-            ...prevState,
-            events: [...prevState.events, { name: '', price: '',Arbon:'',priceOneHour:'' }],
-        }));
-        setVisibleEvents(DataOfEditOwnerHall.events.length + 1);
-    };
     function calculateMinMax (){
         const allPrices = DataOfEditOwnerHall.events?.map((e)=>{
             return e.price;
@@ -405,32 +441,7 @@ const EditHallByOwner = () => {
         }
     };
 
-    const navigate = useNavigate();
 
-    useEffect(()=>{
-        if(FlagSubmit){
-        setTimeout(()=>{
-            navigate(`/DetailsOfHall/${id}`);
-        },3000)
-        }
-    },[FlagSubmit])
-
-    function handleMainImageChange(e){
-        setFlageGhange(true);
-        const newImages = e.target.files[0];
-        setDataOfEditOwnerHall({ ...DataOfEditOwnerHall, hallImage: newImages });
-        setMainImageChange(true);
-    }
-
-    function checkEvents(eventId){
-       if(eventId===undefined){
-           return true
-       } else {
-           return false;
-       }
-    }
-
-    const [VisibleEvents,setVisibleEvents] = useState(2);
     return (
         <>
             <div style={{marginRight: "-130px", position: "absolute", top: "165px", zIndex: "10"}}>
@@ -449,7 +460,8 @@ const EditHallByOwner = () => {
                 ? (
                     <div style={{marginTop: "100px", marginRight: "500px"}}><CircularProgress/></div>)
                 :
-                (<form className="FormAddNewOwnerHall" onSubmit={handleSubmitInEditOwnerHall}>
+                (
+                    <form className="FormAddNewOwnerHall" onSubmit={handleSubmitInEditOwnerHall}>
                     <div>
                         <label>اسم الصالة:</label>
                         <input type="text" name="hallName" value={DataOfEditOwnerHall.name}
@@ -537,6 +549,7 @@ const EditHallByOwner = () => {
                                     <p className="error">{ErrorsDataOfEditOwnerHall[`occasionAddOneHour${index}`]}</p>
                                 )}
 
+                                {/*if event is Disabled*/}
                                 {occ.isActive === false
                                     ?
                                     <button
@@ -598,11 +611,10 @@ const EditHallByOwner = () => {
                         }
                     </div>
 
-
                     <br/>
 
 
-                    {/* Dynamic Services */}
+                    {/* Services */}
                     <div className="services-section">
                         <label>الخدمات:</label>
                         <div style={{
@@ -678,6 +690,7 @@ const EditHallByOwner = () => {
                                 )}
                             </div>
                         }
+
                         {DataOfEditOwnerHall?.subImages?.map((i, index) => (
                             <div key={index} className="photoInput">
                                 <img
@@ -695,7 +708,6 @@ const EditHallByOwner = () => {
                                     <p className="error">{ErrorsDataOfEditOwnerHall[`image${index}`]}</p>
                                 )}
                             </div>
-
                         ))
                         }
                     </div>
@@ -736,7 +748,8 @@ const EditHallByOwner = () => {
                     </div>
 
                     <input disabled={FlageChange === false} type="submit" value="حفظ التغييرات"/>
-                </form>)
+                </form>
+                )
             }
         </>
     );
