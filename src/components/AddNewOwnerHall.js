@@ -97,7 +97,6 @@ const AddNewOwnerHall = () => {
         setErrorsDataOfAddNewOwnerHall(errors);
 
         // Return true if no errors
-        console.log(errors);
         return Object.keys(errors).length === 0;
     };
 
@@ -145,10 +144,10 @@ const AddNewOwnerHall = () => {
         e.preventDefault();
         const validationErrorsAddHall = validationDataOfAddNewOwnerHall();
         if (!validationErrorsAddHall) {
-            console.log(validationErrorsAddHall)
-
+            console.log(validationErrorsAddHall);
         }
 
+        //no errors [True]
         else {
             setLoading(true);
             setErrorsDataOfAddNewOwnerHall({});
@@ -203,10 +202,6 @@ const AddNewOwnerHall = () => {
                     if(response.data?.hallId){
                         const id = response.data.hallId;
                         DataOfAddNewOwnerHall.occasions.map((e) => {
-                            console.log(e.occasion)
-                            console.log(e.price)
-                            console.log(e.deposit)
-                            console.log(e.addOneHour)
                             const fetch = async ()=>{
                                 try {
                                     const response2 = await axios.post(

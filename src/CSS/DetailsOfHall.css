@@ -10,6 +10,42 @@
     border-radius: 10px;
 }
 
+.selectedDetailsHallName{
+    width: 90%;
+    /*border: 1px solid black;*/
+    margin: auto;
+    height: 90px;
+    position: relative;
+    /*top:-35px;*/
+    top:-25px;
+    /*background-color: #FAEEF6;*/
+}
+.selectedDetailsHallName h1{
+    font-weight: bold;
+    font-size: 50px;
+    color: #0048a7;
+    opacity: 0.7;
+    font-family:'Amiri', serif;
+    text-align: center;
+    position: relative;
+    /*border: 1px solid green;*/
+    top:12px;
+}
+
+.HallUnderName{
+    position: absolute;
+    height: 120px;
+    width: 400px;
+    /*border: 1px solid red;*/
+    right: 32.5%;
+    top:-10px;
+    z-index: 1;
+    transform: scaleY(-1);
+}
+.HallUnderName img{
+    height: 120px;
+    width:400px;
+}
 
 .selectedDetailsHallVideo{
     margin-top: -9px;
@@ -23,19 +59,11 @@
     /*right: 2.5%;*/
     padding:18px 1px;
 }
-
-
 .selectedDetailsHallVideo video{
     border-radius: 10px;
     width: 96%;
     object-fit: cover;
     box-shadow: 1px 1px 1px #f8d7da;
-}
-
-.HrDetailsHall{
-    display: flex;
-    justify-content: center;
-    margin-top:5px;
 }
 
 .HrDetailsHallh1{
@@ -47,6 +75,15 @@
     text-shadow: 2px 2px 2px gray;
 }
 
+
+.HrDetailsHall{
+    display: flex;
+    justify-content: center;
+    margin-top:5px;
+}
+
+
+/*none Use From Here*/
 .DetailsOfHall3Images{
     display: flex;
     justify-content: center;
@@ -56,7 +93,6 @@
     padding: 20px;
 
 }
-
 .DetailsOfHall3Images img{
     height: 400px;
     width: 350px;
@@ -64,7 +100,6 @@
     /*border-radius: 15px;*/
     /*box-shadow: 3px 3px 3px #738AA3;*/
 }
-
 .Pic1Div, .Pic2Div , .Pic3Div{
     /*border: 1px solid cornflowerblue;*/
     height: 400px;
@@ -74,7 +109,6 @@
     padding-right: 10px;
 
 }
-
 .Pic1Div  img {
     transition: transform 3s ease;
     border-radius: 10%;
@@ -98,6 +132,14 @@
 }
 .Pic3Div:hover{
     transform: scale(1.1);
+}
+/*none Use to Here*/
+
+.HrUnderServices{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-top: 20px;
 }
 
 .HallServicesH2{
@@ -169,44 +211,6 @@
 }
 
 
-.selectedDetailsHallName{
-    width: 90%;
-    /*border: 1px solid black;*/
-    margin: auto;
-    height: 90px;
-    position: relative;
-    /*top:-35px;*/
-    top:-25px;
-    /*background-color: #FAEEF6;*/
-}
-
-.selectedDetailsHallName h1{
-    font-weight: bold;
-    font-size: 50px;
-    color: #0048a7;
-    opacity: 0.7;
-    font-family:'Amiri', serif;
-    text-align: center;
-    position: relative;
-    /*border: 1px solid green;*/
-    top:12px;
-}
-
-.HallUnderName{
-    position: absolute;
-    height: 120px;
-    width: 400px;
-    /*border: 1px solid red;*/
-    right: 32.5%;
-    top:-10px;
-    z-index: 1;
-    transform: scaleY(-1);
-}
-.HallUnderName img{
-    height: 120px;
-    width:400px;
-}
-
 .NavGoToBookingHall{
     display: flex;
     justify-content: center;
@@ -238,12 +242,6 @@
     background-color:  #E9CEC3;
 }
 
-.HrUnderServices{
-    display: flex;
-    justify-content: center;
-    position: relative;
-    margin-top: 20px;
-}
 
 .wardaDetailsDiv{
     width: 200px;
@@ -254,13 +252,12 @@
     left: -120px;
     bottom:150px;
 }
-
-
 .wardaDetailsDiv img{
     width: 100%;
     height: 100%;
     rotate: 20deg;
 }
+
 .wardaDetailsDiv2{
     width: 200px;
     height: 200px;
@@ -269,15 +266,12 @@
     position: absolute;
     right: -120px;
     bottom:150px;
-
 }
-
 .wardaDetailsDiv2 img{
     width: 100%;
     height: 100%;
     transform: scaleX(-1);
     rotate: -20deg;
-
 }
 
 /*/////*/

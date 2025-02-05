@@ -212,11 +212,13 @@ const DetailsOfHall = () => {
                         <div id="cornerRight" style={{position: "absolute", left: "650px", top: "383px", zIndex: "2"}}>
                             <img src={bookingDetalisborder2} alt="noPic"/>
                         </div>
+
                         <div className="large-imageDetailsHall" id="largeImageContainer"
-                             onClick={() => {
-                                 showImage(hallDetailsById?.subImages?.[0])
-                             }
-                             }>
+                             // onClick={() => {
+                             //     showImage(hallDetailsById?.subImages?.[0])
+                             // }
+                             // }
+                        >
                             <img id="largeImage" src={hallDetailsById?.subImages?.[0]} alt="Selected"/>
                         </div>
 
