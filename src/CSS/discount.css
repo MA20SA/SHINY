@@ -2,7 +2,6 @@
     width: 100%;
     margin: auto;
     height: 500px;
-    /*border: 1px solid red;*/
     position: relative;
     top: -100px;
     background-color:#FAEEF6;
@@ -34,6 +33,7 @@
     position: relative;
     top:40px;
 }
+
 .khasem{
     margin-bottom: 10px;
 }

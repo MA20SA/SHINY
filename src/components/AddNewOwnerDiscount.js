@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import moment from "moment";
 import SignInAlert from "./SignInAlert";
-import sales from "../images/salesCorner.png";
 import discounts from "../images/discount.png";
 
 const AddNewOwnerDiscount = () => {
@@ -15,6 +14,7 @@ const AddNewOwnerDiscount = () => {
         endTime: '',
         DiscountValue: ''
     });
+
     //save owner ID Who's LogIn now
     const OwnerIdInAddDiscount = localStorage.getItem("userID");
     //halls of this owner
@@ -23,7 +23,7 @@ const AddNewOwnerDiscount = () => {
     const [occasionsInAddDiscount, setOccasionsInAddDiscount] = useState([]);
     const [ErrorsDataOfAddNewOwnerDiscountInAddDiscount, setErrorsDataOfAddNewOwnerDiscountInAddDiscount] = useState({});
 
-    //to Fetch Hall
+    //to Fetch Hall for this owner ... hallsInAddDiscount
     useEffect(() => {
         const fetchHalls = async () => {
             try {
@@ -40,7 +40,8 @@ const AddNewOwnerDiscount = () => {
 
         fetchHalls();
     }, []);
-    //to Fetch events according to selected hall
+
+    //to Fetch events according to selected hall (hallID) ... occasionsInAddDiscount
     useEffect(() => {
         if(selectedHallInAddDiscount!=="") {
             const fetchHalls = async () => {
@@ -48,7 +49,6 @@ const AddNewOwnerDiscount = () => {
                     const response = await axios.get(`https://shinyproject.onrender.com/hall/${selectedHallInAddDiscount}/event`);
                     if (response.data?.events) {
                         setOccasionsInAddDiscount(response.data.events);
-                        console.log(response.data.events);
                     }
                 } catch (e) {
                     console.error('Error fetching events:', e);
@@ -82,7 +82,7 @@ const AddNewOwnerDiscount = () => {
     const validateDiscountForm = () => {
         const errors = {};
         if (!selectedHallInAddDiscount) errors.hall = "يرجى اختيار صالة";
-        if (DataOfAddNewOwnerDiscountInAddDiscount.occasions.length === 0) errors.occasions = "يرجى اختيار مناسبة واحدة على الأقل";
+        if (DataOfAddNewOwnerDiscountInAddDiscount.occasions.length === 0) errors.occasions = "يرجى اختيار مناسبة واحدة";
         if (!DataOfAddNewOwnerDiscountInAddDiscount.startDate) errors.startDate = "تاريخ البداية مطلوب";
         if (!DataOfAddNewOwnerDiscountInAddDiscount.endDate) errors.endDate = "تاريخ النهاية مطلوب";
         if (!DataOfAddNewOwnerDiscountInAddDiscount.DiscountValue) errors.DiscountValue = "قيمة الخصم مطلوبة";
@@ -94,20 +94,6 @@ const AddNewOwnerDiscount = () => {
         setErrorsDataOfAddNewOwnerDiscountInAddDiscount(errors);
         return Object.keys(errors).length === 0;
     };
-    
-    // const formatDateToDDMMYYYY = (date) => {
-    //     if (!date) return '';
-    //     const [year, month, day] = date.split('-'); // Split the "YYYY-MM-DD" format
-    //     return `${day}-${month}-${year}`; // Rearrange to "DD-MM-YYYY"
-    // };
-
-    // const convertTo12HourFormat = (time) => {
-    //     if (!time) return "";
-    //     const [hours, minutes] = time.split(":");
-    //     const period = +hours >= 12 ? "PM" : "AM";
-    //     const convertedHours = +hours % 12 || 12; // Convert 0 to 12 for 12 AM
-    //     return `${convertedHours}:${minutes} ${period}`;
-    // };
 
     const formatDateToDDMMYYYY = (date) => {
         if (!date) return '';
@@ -122,15 +108,14 @@ const AddNewOwnerDiscount = () => {
     const[flageSuccess,setFlageSuccess]=useState(false);
     const handleSubmitDiscount = (e) => {
         e.preventDefault();
+
+        // true so no errors
         if (validateDiscountForm()) {
             const fetchHalls = async () => {
                 try {
-                    // const start =`${formatDateToDDMMYYYY(DataOfAddNewOwnerDiscountInAddDiscount.startDate)}" "${convertTo12HourFormat(DataOfAddNewOwnerDiscountInAddDiscount.startTime)}`;
-                    // const end =`${formatDateToDDMMYYYY(DataOfAddNewOwnerDiscountInAddDiscount.endDate)}" "${convertTo12HourFormat(DataOfAddNewOwnerDiscountInAddDiscount.endTime)}`;
                     const start = `${formatDateToDDMMYYYY(DataOfAddNewOwnerDiscountInAddDiscount.startDate)} ${convertTo12HourFormat(DataOfAddNewOwnerDiscountInAddDiscount.startTime)}`;
                     const end = `${formatDateToDDMMYYYY(DataOfAddNewOwnerDiscountInAddDiscount.endDate)} ${convertTo12HourFormat(DataOfAddNewOwnerDiscountInAddDiscount.endTime)}`;
-                    console.log("Start Data", start);
-                    console.log("End Data", end);
+
                     const response = await axios.post(`https://shinyproject.onrender.com/discount/createDiscount/halls/${selectedHallInAddDiscount}/`,{
                         eventName: DataOfAddNewOwnerDiscountInAddDiscount.occasions,
                         discountPrice: DataOfAddNewOwnerDiscountInAddDiscount.DiscountValue,
@@ -179,13 +164,11 @@ const AddNewOwnerDiscount = () => {
                 boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
                 borderWidth: "10px"
             }}>
+
                 <div className="AddDiscountByOwner">
                     <img src={discounts}/>
                 </div>
 
-                {/*<div className="salesPhoto" style={{position: "absolute", right: "-10px", top: "95px"}}>*/}
-                {/*    <img src={sales} alt="no pic"/>*/}
-                {/*</div>*/}
 
                 <div style={{position: "relative", zIndex: "101", left: "418px",top:"-250px"}}>
                     <SignInAlert flag={flageSuccess} SignInAlertText={"تم إضافة العرض بنجاح"}
@@ -207,6 +190,8 @@ const AddNewOwnerDiscount = () => {
                 </div>
 
                 <form onSubmit={handleSubmitDiscount} style={{marginTop:"-80px"}}>
+
+                    {/*halls*/}
                     <div style={{display: "block"}}>
                         <select style={{
                             marginTop: "-70px",
@@ -222,6 +207,7 @@ const AddNewOwnerDiscount = () => {
                                style={{marginTop: "40px"}}>{ErrorsDataOfAddNewOwnerDiscountInAddDiscount.hall}</p>}
                     </div>
 
+                    {/*events*/}
                     {occasionsInAddDiscount?.length > 0 && (
                         <div style={{
                             position: "relative",
@@ -271,7 +257,7 @@ const AddNewOwnerDiscount = () => {
                         <label>وقت البداية:</label>
                         <input
                             type="time"
-                            value={DataOfAddNewOwnerDiscountInAddDiscount.startTime} // Show the "HH:MM" time
+                            value={DataOfAddNewOwnerDiscountInAddDiscount.startTime}
                             onChange={(e) => handleChangeInAddDiscount(e, "startTime")}
                         />
                         {ErrorsDataOfAddNewOwnerDiscountInAddDiscount.startTime &&
@@ -289,7 +275,7 @@ const AddNewOwnerDiscount = () => {
                         <label>وقت النهاية:</label>
                         <input
                             type="time"
-                            value={DataOfAddNewOwnerDiscountInAddDiscount.endTime} // Show the "HH:MM" time
+                            value={DataOfAddNewOwnerDiscountInAddDiscount.endTime}
                             onChange={(e) => handleChangeInAddDiscount(e, "endTime")}
                         />
 

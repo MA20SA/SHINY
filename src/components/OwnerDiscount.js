@@ -10,6 +10,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import moment from "moment";
 import SignInAlert from "./SignInAlert";
 
+//CSS for this component in : discount, AddDiscount, OwnerDiscount
 const OwnerDiscount = () => {
 
     //Fetch specific Discount according to OwnerID
@@ -25,6 +26,7 @@ const OwnerDiscount = () => {
         setSelectCityDiscount(event.target.value);
     }
 
+    // fetch one obj for each card/hall ... filteredHallsDiscountOwner
     useEffect(() => {
         if(HallOfOwner.length>0){
             setfilteredHallsDiscountOwner(Object.values(
@@ -51,12 +53,13 @@ const OwnerDiscount = () => {
 
     const [currentPageDiscountOwner, setCurrentPageDiscountOwner] = useState(1);
     const CardsPerPageDiscountOwner = 3;
-    const totalPagesDiscountOwner = Math.ceil(filteredHallsDiscountOwner.length / CardsPerPageDiscountOwner);
+    const totalPagesDiscountOwner = Math.ceil(filteredHallsDiscountOwner.length / CardsPerPageDiscountOwner); // 7/3 = 3 pages
     const indexOfLastDiscountOwner = currentPageDiscountOwner * CardsPerPageDiscountOwner;
     const indexOfFirstDiscountOwner = indexOfLastDiscountOwner - CardsPerPageDiscountOwner;
     const currentDiscountOwner = filteredHallsDiscountOwner.slice(indexOfFirstDiscountOwner, indexOfLastDiscountOwner);
     const handlePageHallChangeOwner = (page) => setCurrentPageDiscountOwner(page);
     const [filter,setFilter] = useState([]);
+
     // Pagination Of Alert
     const [currentAlertPageOwner, setCurrentAlertPageOwner] = useState(1);
     const OffersPerPageAlertOwner = 1;
@@ -65,12 +68,12 @@ const OwnerDiscount = () => {
     const indexOfFirstAlertOwner = indexOfLastAlertOwner - OffersPerPageAlertOwner;
     const currentAlertOffersOwner = filter.slice(indexOfFirstAlertOwner, indexOfLastAlertOwner);
     function handleKhasemOwner(hallID) {
-        console.log(DiscountOfOwner)
         setFilter(DiscountOfOwner.filter(hall => hall.hallId === hallID));
         setCurrentAlertPageOwner(1); // Reset to the first page
         setIsAlertVisibleOwner(true);
     }
 
+    //Disable Discount by owner
     const[flageDisable,setFlageDisable]=useState(false);
     function handleCancle(id){
 
@@ -97,13 +100,13 @@ const OwnerDiscount = () => {
         fetchHalls();
     }
 
-    //there's something new
+    //according to select "" and role ... DiscountOfOwner
     useEffect(() => {
         if (selectCityDiscount === '') {
             setLoading(true)
             const fetchHalls = async () => {
-                console.log('rerender')
                 try {
+                    // Fetch All Discount that's not expired
                     const response = await axios.get(`https://shinyproject.onrender.com/discount/getAllhallDiscounts`);
                     if (response.data?.discounts && (localStorage.getItem("authRole") === "owner")) {
                         const OwnerDiscounts = response.data.discounts.filter((d) => {
@@ -114,7 +117,6 @@ const OwnerDiscount = () => {
                         }
                         setDiscountOfOwner(OwnerDiscounts)
                     } else if (response.data?.discounts && (localStorage.getItem("authRole") === "user" || localStorage.getItem("authRole") === null)) {
-                        console.log(response.data.discounts)
                         const OwnerDiscounts = response.data.discounts.map((d) => {
                             return d;
                         });
@@ -131,14 +133,13 @@ const OwnerDiscount = () => {
 
         }}, [selectCityDiscount]);
 
+    //Fetch Details of each hall contain discount ... HallOfOwner
     useEffect(() => {
         if (DiscountOfOwner.length>0) {
             const fetchAllHalls = async () => {
                 const hallsArray = []; // Temporary array to store fetched halls
 
-                console.log(DiscountOfOwner)
                 for (const h of DiscountOfOwner) {
-                    console.log(h.hallId);
                     try {
                         const response = await axios.get(
                             `https://shinyproject.onrender.com/hall/getHallDetails/${h.hallId}`
@@ -160,9 +161,9 @@ const OwnerDiscount = () => {
 
     }, [DiscountOfOwner]);
 
+    //Fetch discount according to city ... DiscountOfOwner
     useEffect(() => {
         if(selectCityDiscount!==""){
-            console.log(selectCityDiscount)
             setLoading(true)
             const fetchHalls = async () => {
                 try {
@@ -191,6 +192,7 @@ const OwnerDiscount = () => {
     return (
         <div id="DiscountOfUserView">
 
+            {/*CSS in AddDiscount*/}
             <div className="salesPhoto">
                 <img src={sales} alt="no pic"/>
             </div>
@@ -247,6 +249,7 @@ const OwnerDiscount = () => {
 
                 <br/>
 
+                {/*Cards of Hall*/}
                 <div className="AddDiscountContainer">
                     {loading ?
                         <div style={{marginTop: "20px"}}>
