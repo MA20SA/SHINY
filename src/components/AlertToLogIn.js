@@ -28,7 +28,6 @@ const AlertToLogIn = ({ message, onClose }) => {
     };
 
     useEffect(() => {
-        // Redirect after 5 seconds
         const timer = setTimeout(onClose, 3000);
         return () => clearTimeout(timer); // Cleanup timer on component unmount
     }, [onClose]);

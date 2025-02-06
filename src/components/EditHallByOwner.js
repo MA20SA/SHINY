@@ -227,17 +227,7 @@ const EditHallByOwner = () => {
 
         if (!DataOfEditOwnerHall.capacity) errors.hallCapacity = "حقل سعة القاعة مطلوب";
 
-        // if (!DataOfEditOwnerHall.video) errors.video = "الفيديو مطلوب";
-
         if (!DataOfEditOwnerHall.bookingConfirmationTime) errors.payTime = "الوقت المتاح لتأكيد الحجز مطلوب";
-
-        // Check if 3 images are uploaded
-        // DataOfEditOwnerHall.subImages.forEach((image, index) => {
-        //     if (!image) errors[`image${index}`] = `الصورة ${index + 1} مطلوبة`;
-        //
-        // });
-        //
-        // if(!DataOfEditOwnerHall.hallImage) errors.hallImage = "الصورة مطلوبة";
 
 
         setErrorsDataOfEditOwnerHall(errors);
@@ -262,6 +252,8 @@ const EditHallByOwner = () => {
         const validationErrorsAddHall = validationDataOfEditOwnerHall();
         if (validationErrorsAddHall) {
             const { min, max } = calculateMinMax();
+
+            // submit Hall {without events, pictures, video}
             const fetchHalls = async () => {
                 try {
                     const response = await axios.put(`https://shinyproject.onrender.com/hall/${id}`,
@@ -290,12 +282,15 @@ const EditHallByOwner = () => {
                         setErrorsDataOfEditOwnerHall({});
                     }
                 } catch (e) {
-                    console.error('Error fetching halls:', e);
+                    console.error('Error editing hall:', e);
                 }
             };
+
+            //submit new Events
             fetchHalls().then(
                 ()=>{
                     DataOfEditOwnerHall.events.map((e) => {
+                        //return true if event is new (id is undefined)
                         if(checkEvents(e.eventId)){
                             const fetch = async ()=>{
                                 try {
@@ -322,8 +317,8 @@ const EditHallByOwner = () => {
                             }
                             fetch();
                         }
+                        //edit in event Already made
                         else {
-                            console.log(e.name)
                             const fetch = async () => {
                                 try {
                                     const response2 = await axios.put(
@@ -351,6 +346,8 @@ const EditHallByOwner = () => {
                     })
 
                 }
+
+                //submit MainImage if it changed
             ).then(
                 ()=>{
                     if(MainImageChange) {
@@ -372,18 +369,20 @@ const EditHallByOwner = () => {
                                     setFlagSubmit(true);
                                 }
                             } catch (e) {
-                                console.error('Error fetching halls:', e);
+                                console.error('Error edit main image:', e);
                             }
                         };
                         submitMain();
                     }
                 }
+                //submit sub images if it changed
             ).then(
                 ()=>{
                     DataOfEditOwnerHall?.subImages.map((i,index)=>{
                         if(SubImageChange[index]) {
-                            console.log(OldImages[index])
-                            console.log(DataOfEditOwnerHall.subImages[index])
+                            // console.log(OldImages[index]) .. public
+                            // console.log(DataOfEditOwnerHall.subImages[index])
+
                             const submitSub = async () => {
                                 try {
                                     const formData = new FormData();
@@ -410,6 +409,7 @@ const EditHallByOwner = () => {
                         }
                     })
                 }
+                //submit video if it changed
             ).then(
                 ()=>{
                     if(VideoChange) {
@@ -431,7 +431,7 @@ const EditHallByOwner = () => {
                                     setFlagSubmit(true);
                                 }
                             } catch (e) {
-                                console.error('Error fetching halls:', e);
+                                console.error('Error update video:', e);
                             }
                         };
                         submitVideo();
