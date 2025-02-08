@@ -29,10 +29,13 @@
     background-color: #c8e6c9; /* Light green background for confirmed status */
     color: #2e7d32; /* Dark green text color */
 }
-
 .pending {
     background-color: #fff3cd; /* Light yellow background for pending status */
     color: #856404; /* Dark yellow text color */
+}
+.canceled {
+    background-color: #f8d7da; /* Light red background */
+    color: #721c24; /* Dark red text */
 }
 
 .cancelButton {
@@ -78,12 +81,6 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
-.canceled {
-    background-color: #f8d7da; /* Light red background */
-    color: #721c24; /* Dark red text */
-    /*text-decoration: line-through; !* Strikethrough text *!*/
-}
-
 .cancelButton:disabled {
     background-color: #ccc; /* Gray background when disabled */
     cursor: not-allowed; /* Change cursor to indicate it's not clickable */
@@ -100,7 +97,6 @@
     padding: 20px;
     font-family: Amiri, cursive;
     color: #2b3a4b;
-    /*background-color: rgba(205, 224, 239, 0.5);*/
 }
 
 .countdown-timer h4 {
@@ -112,10 +108,8 @@
 }
 
 .countdown-timer-numbers {
-    /*border: 1px solid red;*/
     display: flex;
     justify-content: center;
-    /*gap: 40px;*/
     gap: 85px;
     font-size: 24px;
     font-weight: bold;
@@ -133,7 +127,6 @@
     justify-content: center;
     width: 100px;
     height: 100px;
-    /*background: #e0f7fa;*/
     border: 1px solid gray;
     color: #00796b;
     font-size: 27px;
@@ -158,13 +151,11 @@
 
 
 .pagination {
-    /*border: 1px solid red;*/
     z-index: 10;
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-    /*bottom: -83px;*/
     top:680px;
     right: 50%;
     left: 50%;
@@ -230,8 +221,6 @@
     right: 135px;
     top:120px;
     color: #0A499C;
-    /*background-color: #FAEEF6;*/
-    /*border: 3px solid #0A499C;*/
     border-radius: 5px 5px 5px 5px;
     border: 2px solid #0A499C;
     font-weight: bold;
@@ -249,8 +238,6 @@
     right: 255px;
     top:120px;
     color: #0A499C;
-    /*background-color: #FAEEF6;*/
-    /*border: 3px solid #0A499C;*/
     border-radius: 5px 5px 5px 5px;
     border: 2px solid #0A499C;
     font-weight: bold;

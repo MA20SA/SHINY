@@ -25,7 +25,6 @@ const ShowOwnerBookingByAdmin = () => {
                         }
                     });
                 if (response.data?.message==="success") {
-                    console.log(response.data)
                     setBookings(response.data.bookings);
                     setHallName(response.data.hall.name)
                     setCurrentPage(1);
@@ -34,14 +33,7 @@ const ShowOwnerBookingByAdmin = () => {
                 console.error('Error fetching halls:', e);
             }
         };
-        // const intervalId = setInterval(() => {
         FetchBooking().finally(()=>{setLoading(false)});
-        // },1000);
-
-        // // Clean up the interval when the component unmounts
-        // return () => {
-        //     clearInterval(intervalId);
-        // };
     }, []);
 
 

@@ -31,6 +31,7 @@ import DetailsOfOwner from "./components/DetailsOfOwner";
 import ShowOwnerBookingByAdmin from "./components/ShowOwnerBookingByAdmin";
 import CreateAdminDiscount from "./components/CreateAdminDiscount";
 import {RoleProvider} from "./Context/Role";
+import ShowUserInfoByOwner from "./components/ShowUserInfoByOwner";
 
 function App() {
   return (
@@ -65,6 +66,7 @@ function App() {
                   <Route path="/DetailsOfOwner/:id" element={<DetailsOfOwner/>}/>
                   <Route path="/ShowOwnerBookingByAdmin/:id" element={<ShowOwnerBookingByAdmin/>}/>
                   <Route path="/CreateAdminDiscount" element={<CreateAdminDiscount/>}/>
+                  <Route path="/ShowUserInfoByOwner/:userId" element={<ShowUserInfoByOwner/>}/>
               </Routes>
           </Container>
 

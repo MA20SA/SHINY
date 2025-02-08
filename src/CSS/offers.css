@@ -4,15 +4,25 @@
     background-image: url("../images/offersBG.png");
     background-repeat: repeat-x;
     background-position: top;
-    animation: moveBackground 10s linear infinite; /* Add this line */
+    /*The name of the animation (defined in @keyframes moveBackground)*/
+    /*Full Cycle is 10s*/
+    /*linear → Ensures the animation moves at a constant speed*/
+    /*infinite → The animation will loop forever*/
+    animation: moveBackground 10s linear infinite;
 }
 
 @keyframes moveBackground {
+   /* 0%: At the start of the animation, the background image is positioned at (0,0)
+   ...
+   at original place*/
     0% {
         background-position: 0 0;
     }
+  /* 100%: At the end of the animation (after 10 seconds),
+   the background has moved to (100%,0),
+   meaning it has shifted completely to the right.*/
     100% {
-        background-position: 100% 0; /* Adjust this value to control the speed */
+        background-position: 100% 0;
     }
 }
 

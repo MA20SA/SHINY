@@ -15,6 +15,7 @@ const ShowOwners = () => {
 
     const [Owners, setOwners] = useState([]);
 
+    //Fetch Owners
     useEffect(() => {
         const fetchHalls = async () => {
             try {
@@ -25,10 +26,9 @@ const ShowOwners = () => {
                 });
                 if (response.data?.owners) {
                     setOwners(response.data.owners);
-                    console.log(response.data);
                 }
             } catch (e) {
-                console.error('Error fetching halls:', e);
+                console.error('Error fetching owners:', e);
             }
         };
 
@@ -36,7 +36,6 @@ const ShowOwners = () => {
             fetchHalls().finally(() => setLoading(false));
         },1000);
 
-        // Clean up the interval when the component unmounts
         return () => {
             clearInterval(intervalId);
         };
@@ -70,6 +69,7 @@ const ShowOwners = () => {
 
     const[flageDisable,setFlageDisable]=useState(false);
     const[flageActive,setFlageActive]=useState(false);
+
     function handleDisableOwner(_id){
         const disableOwner = async () => {
             try {
@@ -87,7 +87,7 @@ const ShowOwners = () => {
                     },1500)
                 }
             } catch (e) {
-                console.error('Error fetching halls:', e);
+                console.error('Error disable Owner:', e);
             }
         };
         disableOwner();
@@ -109,7 +109,7 @@ const ShowOwners = () => {
                     },1500)
                 }
             } catch (e) {
-                console.error('Error fetching halls:', e);
+                console.error('Error active Owner:', e);
             }
         };
         activeOwner();
@@ -198,7 +198,6 @@ const ShowOwners = () => {
                                     <AddOwner
                                         key={owner._id}
                                         id={owner._id}
-                                        // src={ownerPic}
                                         src={getOwnerImage(index)}
                                         name={owner.username}
                                         address={owner.position}

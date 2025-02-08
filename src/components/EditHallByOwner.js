@@ -3,6 +3,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 import CircularProgress from "@mui/material/CircularProgress";
 import SignInAlert from "./SignInAlert";
+import inAddHall from "../images/inAddHall.png";
 
 const EditHallByOwner = () => {
     const {id } = useParams();
@@ -461,294 +462,320 @@ const EditHallByOwner = () => {
                     <div style={{marginTop: "100px", marginRight: "500px"}}><CircularProgress/></div>)
                 :
                 (
-                    <form className="FormAddNewOwnerHall" onSubmit={handleSubmitInEditOwnerHall}>
-                    <div>
-                        <label>اسم الصالة:</label>
-                        <input type="text" name="hallName" value={DataOfEditOwnerHall.name}
-                               onChange={(e) => handleChangeInEditOwnerHall(e, null, 'name')}
-                        />
-                        {ErrorsDataOfEditOwnerHall.hallName &&
-                            <p className="error">{ErrorsDataOfEditOwnerHall.hallName}</p>
-                        }
-                    </div>
+                    <>
+                        <div style={{
+                            width: "200px",
+                            height: "300px",
+                            position: "absolute",
+                            marginTop: "115px",
+                            marginRight: "450px"
+                        }} className="HallUnderName">
+                            <img style={{opacity: "0.5", transform: "scaleY(-1)", width: "100%", height: "100%"}}
+                                 src={inAddHall} alt="noPic"/>
+                        </div>
 
-                    <div>
-                        <label style={{marginTop: "10px"}}>المدينة:</label>
-                        <select className="selectCity" value={DataOfEditOwnerHall.city} onChange={(e) => {
-                            handleChangeInEditOwnerHall(e, null, 'city')
-                        }}>
-                            <option value="">المدينة</option>
-                            <option value="طولكرم">طولكرم</option>
-                            <option value="نابلس">نابلس</option>
-                            <option value="رام الله">رام الله</option>
-                            <option value="بيت لحم">بيت لحم</option>
-                            <option value="الخليل">الخليل</option>
-                            <option value="قلقيلية">قلقيلية</option>
-                            <option value="جنين">جنين</option>
-                            <option value="أريحا">أريحا</option>
-                        </select>
-                        {ErrorsDataOfEditOwnerHall.city &&
-                            <p className="error"><br/><br/>{ErrorsDataOfEditOwnerHall.city}</p>}
-                    </div>
-                    <br/>
-                    <br/>
-
-                    <div>
-                        <label>العنوان:</label>
-                        <input type="text" name="address" value={DataOfEditOwnerHall.address}
-                               onChange={(e) => handleChangeInEditOwnerHall(e, null, 'address')}
-                               placeholder="طولكرم، دير الغصون"
-                        />
-                        {ErrorsDataOfEditOwnerHall.address &&
-                            <p className="error">{ErrorsDataOfEditOwnerHall.address}</p>}
-                    </div>
-
-
-                    {DataOfEditOwnerHall?.events?.slice(0, VisibleEvents).map((occ, index) => (
-                            <div key={index} className="occasion-row">
-                                <label>المناسبة {index + 1}:</label>
-                                <br/>
-                                <input
-                                    type="text"
-                                    value={occ.name || ''}
-                                    onChange={(e) => handleChangeInEditOwnerHall(e, index, 'name', 'occasions')}
-                                    disabled={!checkEvents(occ.eventId)}
+                        <br/>
+                        <form className="FormAddNewOwnerHall" onSubmit={handleSubmitInEditOwnerHall}>
+                            <div>
+                                <label>اسم الصالة:</label>
+                                <input type="text" name="hallName" value={DataOfEditOwnerHall.name}
+                                       onChange={(e) => handleChangeInEditOwnerHall(e, null, 'name')}
                                 />
-                                <br/>
-                                <label>السعر(₪):</label>
-                                <input
-                                    min="1"
-                                    type="number"
-                                    value={occ.price || ''}
-                                    onChange={(e) => handleChangeInEditOwnerHall(e, index, 'price', 'occasions')}
-
-                                />
-                                {ErrorsDataOfEditOwnerHall[`occasionPrice${index}`] && (
-                                    <p className="error">{ErrorsDataOfEditOwnerHall[`occasionPrice${index}`]}</p>
-                                )}
-                                <label>عربون(₪):</label>
-                                <input
-                                    min="1"
-                                    type="number"
-                                    value={occ.Arbon || ''}
-                                    onChange={(e) => handleChangeInEditOwnerHall(e, index, 'Arbon', 'occasions')}
-
-                                />
-                                {ErrorsDataOfEditOwnerHall[`occasionDeposit${index}`] && (
-                                    <p className="error">{ErrorsDataOfEditOwnerHall[`occasionDeposit${index}`]}</p>
-                                )}
-                                <label>سعر الساعة الإضافيّة(₪):</label>
-                                <input
-                                    min="1"
-                                    type="number"
-                                    value={occ.priceOneHour || ''}
-                                    onChange={(e) => handleChangeInEditOwnerHall(e, index, 'priceOneHour', 'occasions')}
-
-                                />
-                                {ErrorsDataOfEditOwnerHall[`occasionAddOneHour${index}`] && (
-                                    <p className="error">{ErrorsDataOfEditOwnerHall[`occasionAddOneHour${index}`]}</p>
-                                )}
-
-                                {/*if event is Disabled*/}
-                                {occ.isActive === false
-                                    ?
-                                    <button
-                                        className="btn btn-success deleteOwnerHall" type="button"
-                                        onClick={() => ActiveOccasionOfEditOwnerHall(occ.eventId)
-                                        }>تفعيل
-                                    </button>
-                                    :
-                                    <button disabled={(index === 0 && ActualEvents === 1) ||
-                                        (!occ.name || !occ.price || !occ.Arbon || !occ.priceOneHour)
-                                    }
-                                            className="btn btn-danger deleteOwnerHall" type="button"
-                                            onClick={() => deleteOccasionOfEditOwnerHall(occ.eventId, occ.name)
-                                            }>إيقاف
-                                    </button>
+                                {ErrorsDataOfEditOwnerHall.hallName &&
+                                    <p className="error">{ErrorsDataOfEditOwnerHall.hallName}</p>
                                 }
                             </div>
-                        )
-                    )}
 
-                    <button
-                        type="button"
-                        className="btn btn-success AddOwnerHall"
-                        onClick={addOccasionOfEditOwnerHall}
-                        disabled={
-                            DataOfEditOwnerHall?.events?.length > 0 &&
-                            (
-                                !DataOfEditOwnerHall.events[DataOfEditOwnerHall.events.length - 1].name ||
-                                !DataOfEditOwnerHall.events[DataOfEditOwnerHall.events.length - 1].price ||
-                                !DataOfEditOwnerHall.events[DataOfEditOwnerHall.events.length - 1].Arbon ||
-                                !DataOfEditOwnerHall.events[DataOfEditOwnerHall.events.length - 1].priceOneHour
-                            )
-                        }
-                    >
-                        إضافة مناسبة
-                    </button>
-
-                    <div style={{display: "flex", justifyContent: "center"}}>
-                        {(VisibleEvents < DataOfEditOwnerHall?.events?.length)
-                            && <button style={{
-                                border: "none",
-                                borderRadius: "50%",
-                                padding: "7px 13px"
-                            }} className="bg-mute" onClick={() => {
-                                setVisibleEvents(DataOfEditOwnerHall.events.length)
-                            }}><i className="fa-solid fa-arrow-down text-primary"></i></button>
-                        }
-                    </div>
-
-                    <div style={{display: "flex", justifyContent: "center"}}>
-                        {(DataOfEditOwnerHall?.events?.length > 2) && (VisibleEvents === DataOfEditOwnerHall?.events?.length) &&
-                            <button style={{
-                                border: "none",
-                                borderRadius: "50%",
-                                padding: "7px 13px"
-                            }} onClick={() => {
-                                setVisibleEvents(2)
-                            }}><i className="fa-solid fa-arrow-up text-primary"></i></button>
-                        }
-                    </div>
-
-                    <br/>
-
-
-                    {/* Services */}
-                    <div className="services-section">
-                        <label>الخدمات:</label>
-                        <div style={{
-                            position: "relative",
-                            display: "flex",
-                            justifyContent: "center",
-                            marginRight: "-160px"
-                        }}>
-                            <label style={{margin: "10px"}}>
-                                <input
-                                    type="checkbox"
-                                    checked={DataOfEditOwnerHall.DJ}
-                                    onChange={() => handleServiceChangeOfEditOwnerHall('DJ', DataOfEditOwnerHall.DJ)}
-                                />
-                                دي جي
-                            </label>
-                            <br/>
-                            <label style={{margin: "10px"}}>
-                                <input
-                                    type="checkbox"
-                                    checked={DataOfEditOwnerHall.camera}
-                                    onChange={() => handleServiceChangeOfEditOwnerHall('camera', DataOfEditOwnerHall.camera)}
-                                />
-                                تصوير
-                            </label>
-                            <br/>
-                            <label style={{margin: "10px"}}>
-                                <input
-                                    type="checkbox"
-                                    checked={DataOfEditOwnerHall.food}
-                                    onChange={() => handleServiceChangeOfEditOwnerHall('food', DataOfEditOwnerHall.food)}
-                                />
-                                ضيافة
-                            </label>
-                        </div>
-                    </div>
-
-
-                    <div>
-                        <label>زمن استرداد العربون(ساعة):</label>
-                        <input min="1" type="number" name="refundTime" value={DataOfEditOwnerHall.refundTime || ''}
-                               onChange={(e) => handleChangeInEditOwnerHall(e, null, 'refundTime')}/>
-                        {ErrorsDataOfEditOwnerHall.returnArabon &&
-                            <p className="error">{ErrorsDataOfEditOwnerHall.returnArabon}</p>}
-                    </div>
-
-                    <div>
-                        <label>السعة:</label>
-                        <input min="1" type="number" name="hallCapacity" value={DataOfEditOwnerHall.capacity || ''}
-                               onChange={(e) => handleChangeInEditOwnerHall(e, null, 'capacity')}/>
-                        {ErrorsDataOfEditOwnerHall.hallCapacity &&
-                            <p className="error">{ErrorsDataOfEditOwnerHall.hallCapacity}</p>}
-                    </div>
-
-                    {/* File upload for exactly 4 images */}
-                    <div>
-                        <label>صور للقاعة:</label>
-                        {DataOfEditOwnerHall?.hallImage &&
-                            <div className="photoInput">
-                                <img
-                                    src={DataOfEditOwnerHall?.hallImage}
-                                    alt={`Image 1`}
-                                    className="image-preview"
-                                    style={{width: '100px', height: '100px', objectFit: 'cover', padding: '3px'}}
-                                />
-                                <input
-                                    type="file"
-                                    accept="image/*"
-                                    onChange={(e) => handleMainImageChange(e)}
-                                />
-                                {ErrorsDataOfEditOwnerHall.hallImage && (
-                                    <p className="error">{ErrorsDataOfEditOwnerHall.hallImage}</p>
-                                )}
+                            <div>
+                                <label style={{marginTop: "10px"}}>المدينة:</label>
+                                <select className="selectCity" value={DataOfEditOwnerHall.city} onChange={(e) => {
+                                    handleChangeInEditOwnerHall(e, null, 'city')
+                                }}>
+                                    <option value="">المدينة</option>
+                                    <option value="طولكرم">طولكرم</option>
+                                    <option value="نابلس">نابلس</option>
+                                    <option value="رام الله">رام الله</option>
+                                    <option value="بيت لحم">بيت لحم</option>
+                                    <option value="الخليل">الخليل</option>
+                                    <option value="قلقيلية">قلقيلية</option>
+                                    <option value="جنين">جنين</option>
+                                    <option value="أريحا">أريحا</option>
+                                </select>
+                                {ErrorsDataOfEditOwnerHall.city &&
+                                    <p className="error"><br/><br/>{ErrorsDataOfEditOwnerHall.city}</p>}
                             </div>
-                        }
+                            <br/>
+                            <br/>
 
-                        {DataOfEditOwnerHall?.subImages?.map((i, index) => (
-                            <div key={index} className="photoInput">
-                                <img
-                                    src={i.secure_url}
-                                    alt={`Image ${index + 1}`}
-                                    className="image-preview"
-                                    style={{width: '100px', height: '100px', objectFit: 'cover', padding: '3px'}}
+                            <div>
+                                <label>العنوان:</label>
+                                <input type="text" name="address" value={DataOfEditOwnerHall.address}
+                                       onChange={(e) => handleChangeInEditOwnerHall(e, null, 'address')}
+                                       placeholder="طولكرم، دير الغصون"
                                 />
-                                <input
-                                    type="file"
-                                    accept="image/*"
-                                    onChange={(e) => handleImageChangeOfEditOwnerHall(e, index)}
-                                />
-                                {ErrorsDataOfEditOwnerHall[`image${index}`] && (
-                                    <p className="error">{ErrorsDataOfEditOwnerHall[`image${index}`]}</p>
-                                )}
+                                {ErrorsDataOfEditOwnerHall.address &&
+                                    <p className="error">{ErrorsDataOfEditOwnerHall.address}</p>}
                             </div>
-                        ))
-                        }
-                    </div>
 
-                    <div>
-                        <label>فيديو للقاعة:</label>
-                        <input type="file" name="video" accept="video/*" onChange={(e) => {
-                            setFlageGhange(true);
-                            setDataOfEditOwnerHall({
-                                ...DataOfEditOwnerHall,
-                                video: e.target.files[0]
-                            })
-                            setVideoChange(true);
-                        }
-                        }/>
-                        {ErrorsDataOfEditOwnerHall.video &&
-                            <p className="error">{ErrorsDataOfEditOwnerHall.video}</p>
-                        }
-                    </div>
 
-                    <div>
-                        <label>رقم للتواصل:</label>
-                        <input type="text" name="contactNumber" value={DataOfEditOwnerHall.contactPhone || ''}
-                               onChange={(e) => handleChangeInEditOwnerHall(e, null, 'contactPhone')}/>
-                        {ErrorsDataOfEditOwnerHall.contactNumber &&
-                            <p className="error">{ErrorsDataOfEditOwnerHall.contactNumber}</p>
-                        }
-                    </div>
+                            {DataOfEditOwnerHall?.events?.slice(0, VisibleEvents).map((occ, index) => (
+                                    <div key={index} className="occasion-row">
+                                        <label>المناسبة {index + 1}:</label>
+                                        <br/>
+                                        <input
+                                            type="text"
+                                            value={occ.name || ''}
+                                            onChange={(e) => handleChangeInEditOwnerHall(e, index, 'name', 'occasions')}
+                                            disabled={!checkEvents(occ.eventId)}
+                                        />
+                                        <br/>
+                                        <label>السعر(₪):</label>
+                                        <input
+                                            min="1"
+                                            type="number"
+                                            value={occ.price || ''}
+                                            onChange={(e) => handleChangeInEditOwnerHall(e, index, 'price', 'occasions')}
 
-                    <div>
-                        <label>الوقت المتاح لتأكيد الحجز(ساعة):</label>
-                        <input min="1" type="number" name="payTime"
-                               value={DataOfEditOwnerHall.bookingConfirmationTime || ''}
-                               onChange={(e) => handleChangeInEditOwnerHall(e, null, 'bookingConfirmationTime')}/>
-                        {ErrorsDataOfEditOwnerHall.payTime &&
-                            <p className="error">{ErrorsDataOfEditOwnerHall.payTime}</p>
-                        }
-                    </div>
+                                        />
+                                        {ErrorsDataOfEditOwnerHall[`occasionPrice${index}`] && (
+                                            <p className="error">{ErrorsDataOfEditOwnerHall[`occasionPrice${index}`]}</p>
+                                        )}
+                                        <label>عربون(₪):</label>
+                                        <input
+                                            min="1"
+                                            type="number"
+                                            value={occ.Arbon || ''}
+                                            onChange={(e) => handleChangeInEditOwnerHall(e, index, 'Arbon', 'occasions')}
 
-                    <input disabled={FlageChange === false} type="submit" value="حفظ التغييرات"/>
-                </form>
+                                        />
+                                        {ErrorsDataOfEditOwnerHall[`occasionDeposit${index}`] && (
+                                            <p className="error">{ErrorsDataOfEditOwnerHall[`occasionDeposit${index}`]}</p>
+                                        )}
+                                        <label>سعر الساعة الإضافيّة(₪):</label>
+                                        <input
+                                            min="1"
+                                            type="number"
+                                            value={occ.priceOneHour || ''}
+                                            onChange={(e) => handleChangeInEditOwnerHall(e, index, 'priceOneHour', 'occasions')}
+
+                                        />
+                                        {ErrorsDataOfEditOwnerHall[`occasionAddOneHour${index}`] && (
+                                            <p className="error">{ErrorsDataOfEditOwnerHall[`occasionAddOneHour${index}`]}</p>
+                                        )}
+
+                                        {/*if event is Disabled*/}
+                                        {occ.isActive === false
+                                            ?
+                                            <button
+                                                className="btn btn-success deleteOwnerHall" type="button"
+                                                onClick={() => ActiveOccasionOfEditOwnerHall(occ.eventId)
+                                                }>تفعيل
+                                            </button>
+                                            :
+                                            <button disabled={(index === 0 && ActualEvents === 1) ||
+                                                (!occ.name || !occ.price || !occ.Arbon || !occ.priceOneHour)
+                                            }
+                                                    className="btn btn-danger deleteOwnerHall" type="button"
+                                                    onClick={() => deleteOccasionOfEditOwnerHall(occ.eventId, occ.name)
+                                                    }>إيقاف
+                                            </button>
+                                        }
+                                    </div>
+                                )
+                            )}
+
+                            <button
+                                type="button"
+                                className="btn btn-success AddOwnerHall"
+                                onClick={addOccasionOfEditOwnerHall}
+                                disabled={
+                                    DataOfEditOwnerHall?.events?.length > 0 &&
+                                    (
+                                        !DataOfEditOwnerHall.events[DataOfEditOwnerHall.events.length - 1].name ||
+                                        !DataOfEditOwnerHall.events[DataOfEditOwnerHall.events.length - 1].price ||
+                                        !DataOfEditOwnerHall.events[DataOfEditOwnerHall.events.length - 1].Arbon ||
+                                        !DataOfEditOwnerHall.events[DataOfEditOwnerHall.events.length - 1].priceOneHour
+                                    )
+                                }
+                            >
+                                إضافة مناسبة
+                            </button>
+
+                            <div style={{display: "flex", justifyContent: "center"}}>
+                                {(VisibleEvents < DataOfEditOwnerHall?.events?.length)
+                                    && <button style={{
+                                        border: "none",
+                                        borderRadius: "50%",
+                                        padding: "7px 13px"
+                                    }} className="bg-mute" onClick={() => {
+                                        setVisibleEvents(DataOfEditOwnerHall.events.length)
+                                    }}><i className="fa-solid fa-arrow-down text-primary"></i></button>
+                                }
+                            </div>
+
+                            <div style={{display: "flex", justifyContent: "center"}}>
+                                {(DataOfEditOwnerHall?.events?.length > 2) && (VisibleEvents === DataOfEditOwnerHall?.events?.length) &&
+                                    <button style={{
+                                        border: "none",
+                                        borderRadius: "50%",
+                                        padding: "7px 13px"
+                                    }} onClick={() => {
+                                        setVisibleEvents(2)
+                                    }}><i className="fa-solid fa-arrow-up text-primary"></i></button>
+                                }
+                            </div>
+
+                            <br/>
+
+
+                            {/* Services */}
+                            <div className="services-section">
+                                <label>الخدمات:</label>
+                                <div style={{
+                                    position: "relative",
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    marginRight: "-160px"
+                                }}>
+                                    <label style={{margin: "10px"}}>
+                                        <input
+                                            type="checkbox"
+                                            checked={DataOfEditOwnerHall.DJ}
+                                            onChange={() => handleServiceChangeOfEditOwnerHall('DJ', DataOfEditOwnerHall.DJ)}
+                                        />
+                                        دي جي
+                                    </label>
+                                    <br/>
+                                    <label style={{margin: "10px"}}>
+                                        <input
+                                            type="checkbox"
+                                            checked={DataOfEditOwnerHall.camera}
+                                            onChange={() => handleServiceChangeOfEditOwnerHall('camera', DataOfEditOwnerHall.camera)}
+                                        />
+                                        تصوير
+                                    </label>
+                                    <br/>
+                                    <label style={{margin: "10px"}}>
+                                        <input
+                                            type="checkbox"
+                                            checked={DataOfEditOwnerHall.food}
+                                            onChange={() => handleServiceChangeOfEditOwnerHall('food', DataOfEditOwnerHall.food)}
+                                        />
+                                        ضيافة
+                                    </label>
+                                </div>
+                            </div>
+
+
+                            <div>
+                                <label>زمن استرداد العربون(ساعة):</label>
+                                <input min="1" type="number" name="refundTime"
+                                       value={DataOfEditOwnerHall.refundTime || ''}
+                                       onChange={(e) => handleChangeInEditOwnerHall(e, null, 'refundTime')}/>
+                                {ErrorsDataOfEditOwnerHall.returnArabon &&
+                                    <p className="error">{ErrorsDataOfEditOwnerHall.returnArabon}</p>}
+                            </div>
+
+                            <div>
+                                <label>السعة:</label>
+                                <input min="1" type="number" name="hallCapacity"
+                                       value={DataOfEditOwnerHall.capacity || ''}
+                                       onChange={(e) => handleChangeInEditOwnerHall(e, null, 'capacity')}/>
+                                {ErrorsDataOfEditOwnerHall.hallCapacity &&
+                                    <p className="error">{ErrorsDataOfEditOwnerHall.hallCapacity}</p>}
+                            </div>
+
+                            {/* File upload for exactly 4 images */}
+                            <div>
+                                <label>صور للقاعة:</label>
+                                {DataOfEditOwnerHall?.hallImage &&
+                                    <div className="photoInput">
+                                        <img
+                                            src={DataOfEditOwnerHall?.hallImage}
+                                            alt={`Image 1`}
+                                            className="image-preview"
+                                            style={{
+                                                width: '100px',
+                                                height: '100px',
+                                                objectFit: 'cover',
+                                                padding: '3px'
+                                            }}
+                                        />
+                                        <input
+                                            type="file"
+                                            accept="image/*"
+                                            onChange={(e) => handleMainImageChange(e)}
+                                        />
+                                        {ErrorsDataOfEditOwnerHall.hallImage && (
+                                            <p className="error">{ErrorsDataOfEditOwnerHall.hallImage}</p>
+                                        )}
+                                    </div>
+                                }
+
+                                {DataOfEditOwnerHall?.subImages?.map((i, index) => (
+                                    <div key={index} className="photoInput">
+                                        <img
+                                            src={i.secure_url}
+                                            alt={`Image ${index + 1}`}
+                                            className="image-preview"
+                                            style={{
+                                                width: '100px',
+                                                height: '100px',
+                                                objectFit: 'cover',
+                                                padding: '3px'
+                                            }}
+                                        />
+                                        <input
+                                            type="file"
+                                            accept="image/*"
+                                            onChange={(e) => handleImageChangeOfEditOwnerHall(e, index)}
+                                        />
+                                        {ErrorsDataOfEditOwnerHall[`image${index}`] && (
+                                            <p className="error">{ErrorsDataOfEditOwnerHall[`image${index}`]}</p>
+                                        )}
+                                    </div>
+                                ))
+                                }
+                            </div>
+
+                            <div>
+                                <label>فيديو للقاعة:</label>
+                                <input type="file" name="video" accept="video/*" onChange={(e) => {
+                                    setFlageGhange(true);
+                                    setDataOfEditOwnerHall({
+                                        ...DataOfEditOwnerHall,
+                                        video: e.target.files[0]
+                                    })
+                                    setVideoChange(true);
+                                }
+                                }/>
+                                {ErrorsDataOfEditOwnerHall.video &&
+                                    <p className="error">{ErrorsDataOfEditOwnerHall.video}</p>
+                                }
+                            </div>
+
+                            <div>
+                                <label>رقم للتواصل:</label>
+                                <input type="text" name="contactNumber" value={DataOfEditOwnerHall.contactPhone || ''}
+                                       onChange={(e) => handleChangeInEditOwnerHall(e, null, 'contactPhone')}/>
+                                {ErrorsDataOfEditOwnerHall.contactNumber &&
+                                    <p className="error">{ErrorsDataOfEditOwnerHall.contactNumber}</p>
+                                }
+                            </div>
+
+                            <div>
+                                <label>الوقت المتاح لتأكيد الحجز(ساعة):</label>
+                                <input min="1" type="number" name="payTime"
+                                       value={DataOfEditOwnerHall.bookingConfirmationTime || ''}
+                                       onChange={(e) => handleChangeInEditOwnerHall(e, null, 'bookingConfirmationTime')}/>
+                                {ErrorsDataOfEditOwnerHall.payTime &&
+                                    <p className="error">{ErrorsDataOfEditOwnerHall.payTime}</p>
+                                }
+                            </div>
+
+                            <input disabled={FlageChange === false} type="submit" value="حفظ التغييرات"/>
+                        </form>
+                    </>
                 )
             }
         </>

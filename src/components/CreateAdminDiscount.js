@@ -38,12 +38,11 @@ const CreateAdminDiscount = () => {
     const[FlageAddDiscount,setFlageAddDiscount]=useState(false);
 
     const handleSubmitAdminDiscount = (e) => {
-        console.log("hi")
         e.preventDefault();
+        //true so no errors
         if (validateAdminDiscountForm()) {
             const fetchHalls = async () => {
                 try {
-                    console.log("try")
                     const response = await axios.post(`https://shinyproject.onrender.com/discount/createWebsiteDiscount`,{
                         discountPercentage: Number(DataOfAddNewAdminDiscount.discountPercentage / 100),
                         startDate:`${formatDateToDDMMYYYY(DataOfAddNewAdminDiscount.startDate)}`,

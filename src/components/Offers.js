@@ -13,7 +13,6 @@ const Offers = () => {
             try {
                 const response = await axios.get(`https://shinyproject.onrender.com/discount/getWebsiteDiscounts`);
                 if (response.data?.discounts) {
-                    console.log(response.data)
                     setOffer(response.data.discounts);
                 }
             } catch (e) {
@@ -34,7 +33,7 @@ const Offers = () => {
     const role = localStorage.getItem("authRole");
 
     const [currentPageHall, setCurrentPageHall] = useState(1);
-    const CardsPerPageHall = 1; // Number of hall per page
+    const CardsPerPageHall = 1; // Number of offer per page
     const totalPagesHall = Math.ceil(offer.length / CardsPerPageHall);
 
     const indexOfLastHall = currentPageHall * CardsPerPageHall;
@@ -64,7 +63,7 @@ const Offers = () => {
                     },500)
                 }
             } catch (e) {
-                console.error('Error fetching discount:', e);
+                console.error('Error disable Admin Discount:', e);
             }
         };
         disableAdminDiscount();

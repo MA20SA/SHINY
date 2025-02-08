@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from "axios";
 import LoadingDialog from "./LoadingDialog";
 import SignInAlert from "./SignInAlert";
+import inAddHall from "../images/inAddHall.png";
 
 const AddNewOwnerHall = () => {
 
@@ -255,6 +256,13 @@ const AddNewOwnerHall = () => {
 
     return (
         <>
+            <div style={{width:"200px",height:"300px",position:"absolute",marginTop:"115px",marginRight:"450px"}} className="HallUnderName">
+                <img style={{opacity:"0.5",transform:"scaleY(-1)",width:"100%",height:"100%"}} src={inAddHall} alt="noPic"/>
+            </div>
+
+            <br/>
+
+
             <form className="FormAddNewOwnerHall" onSubmit={handleSubmit}>
                 <div>
                     <label style={{marginTop: "10px"}}>اسم الصالة:</label>
@@ -268,7 +276,9 @@ const AddNewOwnerHall = () => {
 
                 <div>
                     <label style={{marginTop: "10px"}}>المدينة:</label>
-                    <select className="selectCity" value={selectCity} onChange={(e)=>{setSelectCity(e.target.value);}}>
+                    <select className="selectCity" value={selectCity} onChange={(e) => {
+                        setSelectCity(e.target.value);
+                    }}>
                         <option value="">المدينة</option>
                         <option value="طولكرم">طولكرم</option>
                         <option value="نابلس">نابلس</option>
@@ -354,13 +364,14 @@ const AddNewOwnerHall = () => {
 
                                     />
                                     <p style={{
-                                       fontSize:"12px",
-                                        position:"relative",
-                                        right:"75px",
-                                        color:"green"
+                                        fontSize: "12px",
+                                        position: "relative",
+                                        right: "75px",
+                                        color: "green"
                                     }}> المناسبات (زفاف، خطوبة، تخرج، ولائم، حناء، أعياد ميلاد، وداع عزوبية) </p>
                                     {ErrorsDataOfAddNewOwnerHall[`occasionName${index}`] && (
-                                        <p className="error" style={{marginTop:"-8px"}}>{ErrorsDataOfAddNewOwnerHall[`occasionName${index}`]}</p>
+                                        <p className="error"
+                                           style={{marginTop: "-8px"}}>{ErrorsDataOfAddNewOwnerHall[`occasionName${index}`]}</p>
                                     )}
                                     <label>السعر(₪):</label>
                                     <input
@@ -529,7 +540,7 @@ const AddNewOwnerHall = () => {
                 <input type="submit" value="إرسال"/>
             </form>
 
-            <div style={{marginRight: "-130px", position: "absolute", top: "165px",zIndex:"10"}}>
+            <div style={{marginRight: "-130px", position: "absolute", top: "165px", zIndex: "10"}}>
                 {flag && <SignInAlert flag={flag} SignInAlertText="تم إنشاء الصالة بنجاح!" AlertHeight="304vh"/>}
             </div>
 

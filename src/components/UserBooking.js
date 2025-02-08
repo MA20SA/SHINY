@@ -8,15 +8,6 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 const UserBooking = () => {
 
-    const convertTo24Hour = (time) => {
-        const [hourMinute, period] = time.trim().split(' ');
-        let [hours, minutes] = hourMinute.split(':').map(Number);
-        if (period === 'PM' && hours < 12) hours += 12; // Convert PM times
-        if (period === 'AM' && hours === 12) hours = 0; // Convert 12 AM to 0 hours
-
-        return `${String(hours).padStart(2, '0')}:${String(minutes || 0).padStart(2, '0')}`; // Return in HH:mm format
-    };
-
     const [bookings, setBookings] = useState([]);
     const [confirmCancelId, setConfirmCancelId] = useState(null);
     const [successMessage, setSuccessMessage] = useState('');
@@ -25,6 +16,8 @@ const UserBooking = () => {
     const [currentPage, setCurrentPage] = useState(1); // Current page state
     const bookingsPerPage = 3; // Number of bookings per page
     const [loading,setLoading] = useState(true);
+
+    //Fetch Booking for this user
     useEffect(() => {
             const FetchBooking = async () => {
                 try {
@@ -35,28 +28,22 @@ const UserBooking = () => {
                             }
                         });
                     if (response.data?.bookings) {
-                        console.log(response.data)
                         setBookings(response.data.bookings);
                         setCurrentPage(1);
                     }
                 } catch (e) {
-                    console.error('Error fetching halls:', e);
+                    console.error('Error fetching bookings:', e);
                 }
             };
-        // const intervalId = setInterval(() => {
             FetchBooking().finally(()=>{setLoading(false)});
-        // },1000);
-
-        // // Clean up the interval when the component unmounts
-        // return () => {
-        //     clearInterval(intervalId);
-        // };
     }, []);
 
+    //Click in Cancel
     const handleCancelBooking = (id) => {
         setConfirmCancelId(id);
     };
 
+    //click in confirm cancel by booking id
     function confirmCancellation (id) {
         const CancelBookingUser = async () => {
             try {
@@ -69,7 +56,6 @@ const UserBooking = () => {
                         }
                     });
                 if (response.data) {
-                    console.log(response.data)
                     setConfirmCancelId(null);
                     setSuccessMessage('تم إرسال طلب الإلغاء بنجاح');
                     setTimeout(() => {window.location.href = "/UserBooking"}, 1000);
@@ -81,21 +67,18 @@ const UserBooking = () => {
         CancelBookingUser();
     };
 
+    //click in cancel of cancel
     const cancelCancelation = () => {
         setConfirmCancelId(null);
     };
 
-    //Just Make OneConfirmed Booking
+    //Just Make One Confirmed Booking
+
+    //If a.startDateTime is earlier than b.startDateTime,
+    // the difference will be negative → a comes before b
     const mostRecentBooking = bookings
         .filter(booking => booking.Status === 'مؤكد')
-        .sort((a, b) => {
-            // const dateA = new Date(`${formatDate(a.startDateTime)}T${convertTo24Hour(formatTime(a.startDateTime))}`);
-            const dateA = new Date(`${(a.startDateTime)}T${convertTo24Hour((a.startDateTime))}`);
-            // const dateB = new Date(`${formatDate(b.startDateTime)}T${convertTo24Hour(formatTime(b.startDateTime))}`);
-            const dateB = new Date(`${(b.startDateTime)}T${convertTo24Hour((b.startDateTime))}`);
-            return dateA - dateB;
-        })[0] || null;
-
+        .sort((a, b) => new Date(a.startDateTime) - new Date(b.startDateTime))[0] || null;
 
     // Calculate bookings for the current page
     const indexOfLastBooking = currentPage * bookingsPerPage;
@@ -104,7 +87,6 @@ const UserBooking = () => {
 
     // Pagination logic
     const totalPages = Math.ceil(bookings.length / bookingsPerPage);
-
     const handlePageChange = (page) => {
         setCurrentPage(page);
     };
@@ -124,8 +106,7 @@ const UserBooking = () => {
             )}
             {mostRecentBooking && (
                 <div className="recentBooking">
-                    <CounterTimeBooking
-                        targetDateTime={`${(mostRecentBooking.startDateTime)}`}/>
+                    <CounterTimeBooking targetDateTime={mostRecentBooking.startDateTime} />
                 </div>
             )}
             {loading?(

@@ -3,20 +3,20 @@ import Pagination from "./Pagination";
 import axios from "axios";
 import moment from "moment/moment";
 import CircularProgress from "@mui/material/CircularProgress";
+import {Link} from "react-router-dom";
+import ShowUserInfoByOwner from "./ShowUserInfoByOwner";
 
 const OwnerShowBooking = () => {
     const id = localStorage.getItem("userID");
     const [bookings, setBookings] = useState([]);
-    const [confirmCancelId, setConfirmCancelId] = useState(null);
     const [successMessage, setSuccessMessage] = useState('');
 
     const [currentPage, setCurrentPage] = useState(1); // Current page state
     const bookingsPerPage = 3; // Number of bookings per page
     const [loading,setLoading]=useState(true);
 
-    // const [SelectHall , setSelectHall]=useState("مسايا الخارجية");
     const [HallsOfOwner,setHallsOfOwner] = useState([]);
-    const [SelectHall , setSelectHall]=useState("");
+    const [SelectHall , setSelectHall]=useState(""); //save id of hall
     const handleSelectHall = (event) => {
         setSelectHall(event.target.value);
         setCurrentPage(1); // Reset page to 1 when city changes
@@ -38,14 +38,13 @@ const OwnerShowBooking = () => {
         fetchHallsOwner();
     }, []);
 
-    // const [SelectHallStatus , setSelectHallStatus]=useState('تم');
     const [SelectHallStatus , setSelectHallStatus]=useState("");
     const handleSelectHallStatus = (event) => {
-        setSelectHallStatus(event.target.value); //fetch hall id
-        setCurrentPage(1); // Reset page to 1 when city changes
+        setSelectHallStatus(event.target.value);
+        setCurrentPage(1); // Reset page to 1 when status changes
     };
 
-    //getBookingOfThisHall
+    //getBookingOfThisHall  by hall id
     useEffect(()=>{
         if(SelectHall!==""){
             setLoading(true);
@@ -63,13 +62,15 @@ const OwnerShowBooking = () => {
                     }));
                 }
             } catch (e) {
-                console.error('Error fetching halls:', e);
+                console.error('Error fetching bookings:', e);
             }
         };
         fetchHallsBooking().finally(()=>{setLoading(false)});
         }
     },[SelectHall,SelectHallStatus])
 
+    //confirm Booking
+    const [confirmCancelId, setConfirmCancelId] = useState(null);
     const handelConfirmBooking = (id) => {
         setConfirmCancelId(id);
     };
@@ -93,12 +94,13 @@ const OwnerShowBooking = () => {
                     setTimeout(() => window.location.href= "/OwnerShowBooking", 1000);
                 }
             } catch (e) {
-                console.error('Error fetching halls:', e);
+                console.error('Error confirm booking:', e);
             }
         };
         ConfirmBooking();
     };
 
+    //cancel booking
     const [confirmCancelBookingId, setConfirmCancelBookingId] = useState(null);
     const handelCancelBooking = (id) => {
         setConfirmCancelBookingId(id);
@@ -123,7 +125,7 @@ const OwnerShowBooking = () => {
                     setTimeout(() => window.location.href= "/OwnerShowBooking", 1000);
                 }
             } catch (e) {
-                console.error('Error fetching halls:', e);
+                console.error('Error cancel booking:', e);
             }
         };
         CancelBooking();
@@ -149,6 +151,17 @@ const OwnerShowBooking = () => {
     const formatTime = (date) => {
         return moment(date, 'DD-MM-YYYY hh:mm A').format('hh:mm A'); // Only get the time part
     };
+
+    const [userId,setUserId]=useState(null);
+    function onShowUserChange (userId){
+        setUserId(userId);
+    }
+    useEffect(()=>{
+        if(userId!==null) {
+            window.location.href = `/ShowUserInfoByOwner/${userId}`;
+        }
+    },[userId])
+
     return (
         <div id="OwnerBookings" className="userBookings">
             {successMessage && (
@@ -202,15 +215,17 @@ const OwnerShowBooking = () => {
                     <tbody>
                     {currentBookings.map(booking => (
                         <tr key={booking._id}
-                            className={booking.Status === 'مؤكد' ? 'confirmed' : booking.Status === 'جاري مراجعة الطلب' ? 'pending' : booking.Status === 'ملغى' ? 'canceled' : booking.Status === 'تم' ? 'disabled' : ''}
+                            className={booking.Status === 'مؤكد' ? 'confirmed' : booking.Status === 'قيد المعالجة' ? 'pending' : booking.Status === 'ملغى' ? 'canceled' : booking.Status === 'تم' ? 'disabled' : ''}
                         >
                             <td>
                                 {formatDate(booking.createdAt)}
                                 <br/>
                                 {formatTime(booking.createdAt)}
                             </td>
-                            <td>{booking.bookedByUsername === "نظام الحجز"
-                                ? booking.username
+                            <td>
+                                {booking.bookedByUsername === "نظام الحجز"
+                                // ? <Link to={`/ShowUserInfoByOwner/${showUser}`}>{showUser}{booking.username}</Link>
+                                ? <span style={{cursor:"zoom-in"}} onClick={()=> onShowUserChange(booking.userId)}>{booking.username}</span>
                                 : booking.bookedByUsername
                             }</td>
                             <td>{booking.hallName}</td>
@@ -226,6 +241,7 @@ const OwnerShowBooking = () => {
                             <td>{booking.Status}</td>
                             <td>
                                 {
+                                    // Cancel
                                     (confirmCancelBookingId === booking._id) && (booking.Status === "قيد المعالجة") ? (
                                         <>
                                             <div>
@@ -240,7 +256,6 @@ const OwnerShowBooking = () => {
                                                 </button>
                                             </div>
                                             <br/>
-                                            {/*Cancel*/}
                                         </>
                                     ) : (
                                         <button className="cancelButton" onClick={() => handelCancelBooking(booking._id)}
@@ -251,6 +266,8 @@ const OwnerShowBooking = () => {
                                 }
 
                                 <span> </span>
+
+                                {/*To confirm*/}
                                 {(confirmCancelId === booking._id) && (booking.Status === "جاري التأكيد") ? (
                                     <>
                                         <div>
@@ -263,7 +280,6 @@ const OwnerShowBooking = () => {
                                                 لا
                                             </button>
                                         </div>
-                                        {/*Cancel*/}
                                     </>
                                 ) : (
                                     <button className={booking.Status === "جاري التأكيد" ? "confirmButton" : ""}

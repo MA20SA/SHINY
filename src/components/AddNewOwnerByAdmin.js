@@ -44,17 +44,13 @@ const AddNewOwnerByAdmin = () => {
                         }
                     );
                     if (response.status === 200) {
-                        console.log(response.data);
                         setErrors({});
                         setflagForget(true);
                         setTimeout(()=>{
-                            window.location.href = "/ShowOwners"; // Redirect to home or another page
+                            window.location.href = "/ShowOwners";
                         },1500)
                     }
                 } catch (e) {
-                    console.error('Response data:', e.response.data);
-                    console.error('Response status:', e.response.status);
-                    console.error('Response headers:', e.response.headers)
                     setErrors((prevErrors) => ({
                         ...prevErrors,
                         ForgotPassEmail: e.response?.data?.message?"البريد الإلكتروني غير صالح":"" || "An error occurred",
@@ -66,17 +62,17 @@ const AddNewOwnerByAdmin = () => {
     }
 
     return (
-        <div id="AddNEWOWNER" className=" ForgetOut">
+        <div id="AddNEWOWNER" className="ForgetOut">
             <SignInAlert flag={flagForget} SignInAlertText={
                 <>
                     تم إضافة مالك القاعة بنجاج!
                 </>
             } AlertHeight="135vh"/>
+
             <div className=" ForgotDiv">
                 <div className="ForgotDivIn">
                     <form onSubmit={handleForgotSubmit} className="mt-2 pt-2">
                         <div>
-                            {/*<label htmlFor="EmailId">البريد الإلكتروني:</label>*/}
                             <br/>
                             <input id="EmailId" value={ForgotPassEmail} onChange={(event) => {
                                 setForgotPassEmail(event.target.value)

@@ -11,8 +11,8 @@ const DetailsOfOwner = () => {
     const {id } = useParams();
     const [OwnersHalls,setOwnersHalls]= useState([]);
 
+    //Filter Hall For this Owner
     const filteredOwnerHalls = OwnersHalls.filter(hall => hall.createdBy === id);
-    // const filteredOwnerHalls = OwnersHalls.filter(hall => hall.createdBy === '6713f5d715b271c2941d46fa');
 
     const [currentPageOwnersHall, setCurrentPageOwnersHall] = useState(1);
     const CardsPerPageOwnersHall = 6; // Number of hall per page

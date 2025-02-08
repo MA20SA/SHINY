@@ -22,6 +22,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     endPage = Math.min(endPage, totalPages);
 
     return (
+        // css in UserBooking.css
         <div className="pagination">
             <button
                 className="arrow"

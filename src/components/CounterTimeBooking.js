@@ -30,17 +30,9 @@ const CounterTimeBooking = ({ targetDateTime }) => {
 
     return (
         <div className=" countdown-timer">
-            {/*<div className="ComingSoonUserBookingFlower">*/}
-            {/*    <img src={ComingSoonUserBookingFlower} alt="noPic"/>*/}
-            {/*</div>*/}
-
-            {/*<div className="ComingSoonUserBookingFlower2">*/}
-            {/*    <img src={ComingSoonUserBookingFlower} alt="noPic"/>*/}
-            {/*</div>*/}
             <div style={{position:"absolute",right:"140px",top:"67px",zIndex:"1"}}>
                 <img style={{width:"250px",height:"190px",opacity:"0.8"}} src={counterItem} alt="noPic"/>
             </div>
-
             <div style={{position:"absolute",right:"325px",top:"67px",zIndex:"1"}}>
                 <img style={{width:"250px",height:"190px",opacity:"0.8"}} src={counterItem} alt="noPic"/>
             </div>
@@ -50,7 +42,9 @@ const CounterTimeBooking = ({ targetDateTime }) => {
             <div style={{position:"absolute",right:"695px",top:"67px",zIndex:"1"}}>
                 <img style={{width:"250px",height:"190px",opacity:"0.8"}} src={counterItem} alt="noPic"/>
             </div>
+
             <h4>الوقت المتبقي للحجز</h4>
+
             <div className="countdown-timer-numbers">
                 {(
                     <div className="countdown-item">
